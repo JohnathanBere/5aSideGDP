@@ -1,0 +1,11 @@
+url = "/example"
+layout = "default"
+==
+<?
+    function onStart()
+    {
+        $this['hello'] = "this hello!";
+    }
+?>
+==
+<h1>{{ hello }}</h1>
