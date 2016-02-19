@@ -6,4 +6,37 @@
     font-size: 30px;
     padding-top: 1em;
 }
+#header-1 .main-nav .navbar-nav > li.active a
+{
+    color: #ffffff;
+    background: none;
+}
+#header-1 .main-nav .navbar-nav > li a:hover
+{
+    color: #ffffff;
+    background: #8e0000;
+}
 
+
+#header-1 .main-nav .navbar-nav > li a {
+	border-right-color: white;
+	border-right-style: solid;
+	border-right-width: 1px;
+}
+#header-1 .main-nav .nav .dropdown-menu {
+    opacity: 0.9;
+    background: #8E0000;
+    border-right: none;
+}
+#header-1 .main-nav .nav .dropdown-menu > li a {
+    border-right: none;
+}
+#header-1 .main-nav .nav .dropdown-menu:before {
+    border-bottom: 10px solid #8E0000;
+    opacity: 0.9;
+}
+/* clearing the spaces :) */
+
+.clear-section {
+    height: 10px;
+}

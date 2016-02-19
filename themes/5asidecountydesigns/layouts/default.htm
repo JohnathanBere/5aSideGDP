@@ -38,14 +38,24 @@ description = "first custom layout"
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a id="sitelogo" class="navbar-brand clouds silver-hover" href="#">
-    5-A-Side County</a>
+                        <a id="sitelogo" class="navbar-brand clouds silver-hover" href="#">FC County 5-A-Side</a>
                     </div>
                     <!-- Navigation -->
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li class="{% if this.page.id == 'index' %}active{% endif %}"><a href="{{ 'index'|page }}">Home</a></li>
                             <li class="{% if this.page.id == 'profile' %}active{% endif %}"><a href="{{ 'profile'|page }}">Profile</a></li>
+                            <!-- dropdown button -->
+                            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Learn<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Articles</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="{{ 'skills'|page }}">Skills</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="{{ 'tactics'|page }}">Tactics</a></li>
+                             </ul>
+                            </li>
+                            <li class="{% if this.page.id == 'news' %}active{% endif %}"><a href="{{ 'news'|page }}">News</a></li>  
                         </ul>
                         <!--//nav-->
                     </div>
@@ -64,8 +74,8 @@ description = "first custom layout"
         <!-- Begin footer -->
         <div class="copyright-bar bg-milanored">
             <div class="container">
-                <p class="pull-left small">© pgblocks - Pinegrow Blocks</p>
-                <p class="pull-right small">Made with <i class="fa fa-heart pomegranate"></i> on Planet Earth</p>
+                <p class="pull-left small">© GDP - Shirin Bachoo's Cool Crew</p>
+                <p class="pull-right small"> Challenge the Quiz Masters</p>
             </div>
         </div>
         <!-- end footer -->

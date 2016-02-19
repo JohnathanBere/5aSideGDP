@@ -9,6 +9,14 @@ October's mission is to show the world that web development is not rocket scienc
 [![Build Status](https://travis-ci.org/octobercms/october.svg?branch=develop)](https://travis-ci.org/octobercms/october)
 [![License](https://poser.pugx.org/october/october/license.svg)](https://packagist.org/packages/october/october)
 
+### Documentation time
+
+A lot of backend work will be needed to make it so the site can be sustained from the client-side. That is:
+
+User registration and validation is []
+Entity relationships among users and other associations such as posts, statuses and circles []
+Quizzes are put in place []
+
 ### Learning October
 
 The best place to learn October is by [reading the documentation](http://octobercms.com/docs) or [the resources page](http://octobercms.com/resources).
