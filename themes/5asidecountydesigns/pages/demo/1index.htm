@@ -1,0 +1,23 @@
+title = "Test"
+url = "/test"
+layout = "default"
+is_hidden = 0
+
+==
+function onStart() 
+{
+    /**
+    * It is imperative to use array notation for declaring variables
+    * $this['myVar'] will pretty much make the functions in the PHP section
+    * of an OctoberCMS file run amazingly.
+    */
+    $this['posts'] = 'Lol';
+    
+    $this['component'] = 'Heh';
+    
+    $this['peanuts'] = 4;
+}
+==
+
+<h1>{{ posts }} and {{ component }} and the name of this site is {{ this.page.title }}, how many peanuts is {{ peanuts }}</h1>
+

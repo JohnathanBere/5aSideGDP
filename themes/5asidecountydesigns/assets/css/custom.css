@@ -3,9 +3,19 @@
 /* Put your custom styles here */
 #sitelogo
 {
-    font-size: 30px;
+    font-size: 27px;
     padding-top: 1em;
+    position: absolute;
 }
+
+#sitelogo > img
+{
+    height:60px;
+    position: relative;
+    float: left;
+    top: -20px;
+}
+
 #header-1 .main-nav .navbar-nav > li.active a
 {
     color: #ffffff;
@@ -17,12 +27,61 @@
     background: #8e0000;
 }
 
-
 #header-1 .main-nav .navbar-nav > li a {
-	border-right-color: white;
-	border-right-style: solid;
-	border-right-width: 1px;
+	border-right: 1px solid white;
 }
+
+#promo-1 {
+    background-image: url('/themes/5asidecountydesigns/assets/images/stadium.jpg');
+    background-attachment: fixed;
+}
+
+#promo-3 {
+    background-image: url('/themes/5asidecountydesigns/assets/images/16533.jpg');
+}
+
+/*	HEADER 1 MEDIA QUERIES
+/*----------------------------------------------------*/
+
+/* Smaller devices (Screen sizes, less than 768px) */
+@media(max-width: 479px)
+{
+    #sitelogo {
+        font-size: 16px;
+        padding-top: 1em;
+        position: absolute;
+        text-align: center;
+    }
+    
+    #sitelogo > img {
+            visibility: hidden;
+    }
+    #promo-1 {
+        background-image: url('/themes/5asidecountydesigns/assets/images/stadium.jpg');
+        background-position: -9em;
+    }
+}
+
+@media (max-width: 767px)
+{
+    
+    #header-1 .navbar-collapse {
+       
+        background-color: #C52000;
+        
+    }
+    #header-1 .main-nav .navbar-nav > li a {
+       
+        /*border-bottom-width: 1px;*/
+        /*border-bottom-style: solid;*/
+        /*border-bottom-color: white;*/
+        border-right: none;
+    	
+        
+    }
+   
+}
+
 #header-1 .main-nav .nav .dropdown-menu {
     opacity: 0.9;
     background: #8E0000;
@@ -35,6 +94,18 @@
     border-bottom: 10px solid #8E0000;
     opacity: 0.9;
 }
+
+#header-1 .main-nav .nav-header .nav-toggle {
+    opacity: 0.9;
+    background: #8E0000;
+    border-right: none;
+}
+#header-1 .main-nav .nav .dropdown-menu > li a:hover
+{
+    background: #5A0000;
+}
+
+
 /* clearing the spaces :) */
 
 .clear-section {

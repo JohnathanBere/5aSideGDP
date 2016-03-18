@@ -1,0 +1,16 @@
+title = "another test"
+url = "/test2"
+layout = "default"
+
+== 
+function onHandleForm()
+{
+    $this['lastValue'] = post('value');
+}
+==
+
+{{ form_open({ request: 'onHandleForm' }) }}
+    Please enter ye olde string: <input type="text" name="value" />
+    <input type="submit" value="Hand it in!" />
+{{ form_close() }}
+<p> Entered message : {{ lastValue }}</p>
