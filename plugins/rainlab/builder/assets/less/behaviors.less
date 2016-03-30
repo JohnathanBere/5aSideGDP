@@ -34,7 +34,7 @@
             .clearfix();
             cursor: pointer;
 
-            .list-behavior {
+            .list-behavior, .reorder-behavior {
                 .border-radius(4px);
                 border: 2px solid @builder-control-border-color;
                 padding: 25px 10px 25px 10px;
@@ -60,6 +60,23 @@
 
                     tbody tr:last-child td {
                         padding-bottom: 0;
+                    }
+                }
+            }
+
+            .reorder-behavior {
+                table {
+                    i.icon-bars, .placeholder {
+                        float: left;
+                    }
+
+                    i.icon-bars {
+                        margin-right: 15px;
+                        color: #D6DDE0;
+                        font-size: 28px;
+                        line-height: 28px;
+                        position: relative;
+                        top: -2px;
                     }
                 }
             }

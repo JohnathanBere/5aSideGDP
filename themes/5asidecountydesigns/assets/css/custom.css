@@ -1,6 +1,9 @@
 
 
 /* Put your custom styles here */
+
+/* LANDING PAGE */
+
 #sitelogo
 {
     font-size: 27px;
@@ -30,6 +33,10 @@
 #header-1 .main-nav .navbar-nav > li a {
 	border-right: 1px solid white;
 }
+#header-1 .main-nav .nav {
+    margin-top: 12px;
+    margin-right: 1px;
+}
 
 #promo-1 {
     background-image: url('/themes/5asidecountydesigns/assets/images/stadium.jpg');
@@ -39,6 +46,172 @@
 #promo-3 {
     background-image: url('/themes/5asidecountydesigns/assets/images/16533.jpg');
 }
+
+
+
+/* PROFILE PAGE */
+
+#pc-container {
+    margin-top: 10px;
+}
+#pc-jumbotron {
+    padding-right: 47;
+    color: #000000;
+    background-image: url('/themes/5asidecountydesigns/assets/images/16533.jpg'); 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center;
+}
+
+
+
+#pc-container-inner {
+    margin-left: -70px;
+}
+#col-md-2-inner {
+    margin-right: 118px;
+}
+#col-md-2-inner img {
+    height: 300px;
+    width: 235px;
+    margin-right: 158px; 
+    border-radius: 12px;
+}
+#pc-well {
+    opacity: 0.5;
+    background-color: #000000;
+    color: #ffffff;
+}
+#pc-well p {
+    color: #ffffff;
+}
+#pc-well .table {
+    text-align: center;
+}
+
+
+  /* TACTICS PAGE */
+#tc-container {
+    margin-top: 10px;
+}
+#tc-well img {
+    height: 307px;
+}
+#tc-well1 {
+    width: 156px;
+}
+
+
+
+  /* SKILLS PAGE */
+#sk-container {
+    margin-top: 10px;
+}
+
+#sk-well {
+    padding: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    background-color: #E6DBDB;
+}
+#sk-panel-title a {
+    padding: 0px;
+}
+.panel-title img {
+    height: 61px;
+    padding: 4px;
+}
+
+#sk-panel-title a {     
+    background-image: url('/themes/5asidecountydesigns/assets/images/brazil.jpg'); 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position-y: 0%;
+    
+}
+#sk-panel-title2 a {
+    padding: 0px;
+    background-image: url('/themes/5asidecountydesigns/assets/images/brazil.jpg'); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 26%;
+}
+
+#sk-panel-title3 a {
+    padding: 0px;
+}
+
+#sk-panel-title3 a {     
+    background-image: url('/themes/5asidecountydesigns/assets/images/brazil.jpg'); 
+     background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 52%;
+    
+}
+#sk-panel-title4 a {
+    padding: 0px;
+}
+
+#sk-panel-title4 a {     
+    background-image: url('/themes/5asidecountydesigns/assets/images/brazil.jpg'); 
+     background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 78%;
+    
+}
+#sk-panel-title5 a {
+    padding: 0px;
+}
+
+#sk-panel-title5 a {     
+    background-image: url('/themes/5asidecountydesigns/assets/images/brazil.jpg'); 
+     background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 100%;
+    
+}
+
+.panel-group .panel + .panel {
+    margin-top: 3px;
+}
+
+.panel-group {
+    margin-bottom: 5px;
+}
+
+
+ /* ARTICLES PAGE */
+ 
+#at-container {
+    margin-top: 10px;
+}
+
+#at-post img {
+    height: 150px;
+}
+
+#at-well {
+    padding: 0px;
+}
+
+ /* NEWS PAGE */
+ 
+#ns-container {
+    margin-top: 10px;
+}
+
+#ns-jumbotron {
+    padding: 0px;
+    width: 690px;
+}
+
+#ns-well {
+    padding: 0px;
+    width: 428px;
+    margin-left: 49px;
+}
+
+
 
 /*	HEADER 1 MEDIA QUERIES
 /*----------------------------------------------------*/
