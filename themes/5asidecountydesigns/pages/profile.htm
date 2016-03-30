@@ -2,6 +2,13 @@ title = "Profile"
 url = "/profile"
 layout = "default"
 is_hidden = 0
+
+[account]
+paramCode = "code"
+
+[session]
+security = "user"
+redirect = "index"
 ==
 <!-- OIII PUT THIS ON THE CSS FILE! -->
 <!-- Make it truly responsive as well at media queries! -->
@@ -17,7 +24,7 @@ is_hidden = 0
                     </div>
                     <div class="col-md-8">
                             <div class="well" id="pc-well">
-                            <h1>Lincoln Chawora</h1>
+                            <h1>{{ user.profile.username}}</h1>
                             <table class="table">
                                 <tr>
                                     <td>Favourite Team</td>
@@ -26,20 +33,24 @@ is_hidden = 0
                                     <td>Type of Fan</td>
                                 </tr>
                                 <tr>
-                                    <td>Manchester United</td>
-                                    <td>England</td>
-                                    <td>GK</td>
-                                    <td>Hard Core</td>
+                                    <td>{{ user.profile.favourite_team }}</td>
+                                    <td>{{ user.profile.nationality }}</td>
+                                    <td>{{ user.profile.position }}</td>
+                                    <td>{{ user.profile.fan_type }}</td>
                                 </tr>
                             </table>
                             <p>
-                                Something... something... Interesting. or maybe darkside. just for the lolz
+                                {{ user.profile.bio }}
                             </p>
                         </div>
-                    <!-- </div> -->
-                    
+                    <!-- </div> -->  
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<div class="well">
+    <div class="container">
+        {% component 'account' %}
     </div>
 </div>

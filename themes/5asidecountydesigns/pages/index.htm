@@ -1,8 +1,16 @@
-title = "Homepage"
+title = "Home"
 url = "/"
 layout = "default"
-==
+is_hidden = 0
 
+[account]
+redirect = "profile"
+paramCode = "code"
+
+[session]
+security = "guest"
+redirect = "profile"
+==
 <section id="promo-3" class="content-block promo-3 bg-deepocean bg-image-cover min-height-700px" style=";">
             <div class="container text-center">
                 <h1>WANT TO BE THE BEST?</h1>
@@ -28,38 +36,7 @@ layout = "default"
         <section id="promo-1" class="content-block promo-1 min-height-600px bg-offwhite">
             <div class="container">
                 <div class="row">
-                    <div id = "panelOne" class="col-md-5">
-                        <h2 class="white">Already have an account?</h2>
-                        <p class="white">Suspendisse ac pretium sapien, placerat lacinia enim. Fusce eu elit quis lacus cursus mollis. In feugiat diam id sem consectetur, id accumsan risus venenatis.</p>
-                        <form>
-                            <div class="form-group">
-                                <input type="text" placeholder="Email address" class="form-control" />
-                            </div>
-                            <div class="form-group">
-                                <input type="password" placeholder="Password" class="form-control" />
-                            </div>
-                            <a class="btn btn-danger" href="#">Login</a>
-                        </form>
-                    </div>
-                    <!-- /sign-up -->
-                    <div id= "panelTwo" class="col-md-5 col-md-offset-2">
-                        <h2 class="white">Interested in joining?</h2>
-                        <p class="white">Suspendisse ac pretium sapien, placerat lacinia enim. Fusce eu elit quis lacus cursus mollis. In feugiat diam id sem consectetur, id accumsan risus venenatis.</p>
-                        <form>
-                            <div class="form-group">
-                                <input type="text" placeholder="Email address" class="form-control" />
-                            </div>
-                            <div class="form-group">
-                                <input type="password" placeholder="Password" class="form-control" />
-                            </div>
-                            <div class="form-group">
-                                <input type="password" placeholder="Confirm Password" class="form-control" />
-                            </div>
-                            <a class="btn btn-danger" href="#">Register Now!</a>
-                        </form>
-                    </div>
-                    <!-- /.col -->
-                    
+                    {% component 'account' %}
                 </div>
                 <!-- /.row -->
             </div>

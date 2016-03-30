@@ -13,9 +13,10 @@ class CreateProfilesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
+            $table->string('username')->nullable();
             $table->text('bio')->nullable();
-            $table->string('favourite_team');
-            $table->string('nationality');
+            $table->string('favourite_team')->nullable();
+            $table->string('nationality')->nullable();
             $table->string('position')->nullable(); 
             $table->string('fan_type')->nullable();
             $table->timestamps();

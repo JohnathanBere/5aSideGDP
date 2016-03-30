@@ -1,20 +1,29 @@
 title = "News"
 url = "/news"
 layout = "default"
-==
+is_hidden = 0
 
+[blogPosts newsPosts]
+pageNumber = "{{ :page }}"
+categoryFilter = "news"
+postsPerPage = "{{ 5 }}"
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "news-category"
+postPage = "news-post"
+==
 <div class="container" id="ns-container">
     <div class="col-md-7">
         <div class="jumbotron" id="ns-jumbotron">
             <div class="container" id="ns-container">
-                <h1>Blog Feed</h1></h1>
-                 <img src="/themes/5asidecountydesigns/assets/images/.jpg"/>
-                 
-                     
+                <h1>Blog Feed</h1>
             </div>   
-            
         </div>    
-        
+        <div class="well">
+            <div class="container">
+                {% component 'newsPosts' %}
+            </div>
+        </div>
     </div>
                 <div class="col-md-5">
                     <div class="row">

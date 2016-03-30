@@ -47,6 +47,11 @@ class Plugin extends PluginBase
             
                 $form->addTabFields([
                     
+                        'profile[username]' => [
+                                'label' => 'Username',
+                                'tab' => 'Profile',
+                                'type' => 'text',
+                            ],
                         'profile[bio]' => [
                                 'label' => 'About Yourself',
                                 'tab' => 'Profile',
@@ -55,22 +60,22 @@ class Plugin extends PluginBase
                         'profile[favourite_team]' => [
                                 'label' => 'Your Favourite Team',
                                 'tab' => 'Profile',
-                                'type' => 'textarea',
+                                'type' => 'text',
                             ],
                             'profile[nationality]' => [
                                 'label' => 'Nationality',
                                 'tab' => 'Profile',
-                                'type' => 'textarea',
+                                'type' => 'text',
                             ],
                         'profile[position]' => [
                                 'label' => 'Favourite Player Position',
                                 'tab' => 'Profile',
-                                'type' => 'textarea',
+                                'type' => 'text',
                             ],
                         'profile[fan_type]' => [
                                 'label' => 'What sort of fan are you?',
                                 'tab' => 'Profile',
-                                'type' => 'textarea',
+                                'type' => 'text',
                             ],
                         
                     ]);

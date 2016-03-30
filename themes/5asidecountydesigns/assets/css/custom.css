@@ -41,6 +41,7 @@
 #promo-1 {
     background-image: url('/themes/5asidecountydesigns/assets/images/stadium.jpg');
     background-attachment: fixed;
+    color: white;
 }
 
 #promo-3 {
@@ -99,6 +100,7 @@
 }
 #tc-well1 {
     width: 156px;
+    margin-top: 50px;
 }
 
 
@@ -186,12 +188,41 @@
     margin-top: 10px;
 }
 
+@media (min-width: 767px)
+{
+    #flex-container {
+        display: flex;
+        display: -webkit-flex;
+        height: auto;
+        width: auto;
+    }
+}
+
+#at-post {
+    margin: 4px 25px;
+    border-bottom: 1px solid gray;
+    height: 50%;
+}
+
 #at-post img {
     height: 150px;
 }
 
 #at-well {
     padding: 0px;
+}
+#at-row2 {
+    margin-right: -15px;
+    margin-left: 14px;
+}
+
+hr {
+    margin-bottom: 15px;
+    border-top: 1px solid #C1BDBD;
+}
+
+#at-paraBtn {
+    padding-left: 30px;
 }
 
  /* NEWS PAGE */

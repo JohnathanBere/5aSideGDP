@@ -1,31 +1,36 @@
 title = "Articles"
 url = "/articles"
 layout = "default"
+is_hidden = 0
+
+[blogPosts articlePosts]
+pageNumber = "{{ :page }}"
+categoryFilter = "articles"
+postsPerPage = 50
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "article-category"
+postPage = "article-post"
+
+[session]
+security = "user"
+redirect = "index"
 ==
-
-
 <div class="container" id="at-container">
-    <div class="col-md-8">
+    <div class="col-md-12">
         <div class="row" id="at-row">
-            <div class="col-lg-4" id="at-post">
-                <img src="/themes/5asidecountydesigns/assets/images/rashford.jpg"/>
-                  <h3>Safari bug warning!</h3>
-                  <hr>
-                  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                  <p><a class="btn btn-primary" href="#" role="button">View details »</a></p>
-            </div>
+            <div id="flex-container">
+            {% for post in posts %}
+                <div id="at-post">
+                {% for image in post.featured_images %}
+                    <img src="{{ image.path }}" />
+                {% endfor %}
+                      <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+                      <p>{{ post.summary }}</p>
+                      <p id="at-paraBtn"><a class="btn btn-danger" href="{{ post.url }}" role="button">Read More »</a></p>
+                </div>
+            {% endfor %}
+            </div>  
         </div>    
     </div>
-               
-    <div class="col-md-4">
-        <div class="row">
-            <div class="well" id="at-well">
-                <h3>Recent Articles</h3>
-            </div>
-                                         
-        </div>             
-                            
-    </div>
-    
-
 </div>
