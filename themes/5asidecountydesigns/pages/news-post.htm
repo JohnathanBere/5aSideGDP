@@ -7,4 +7,6 @@ is_hidden = 0
 slug = "{{ :slug }}"
 categoryPage = "news-category"
 ==
-{% component 'newsPost' %}
+<div class="container">
+    <div class="content">{{ post.content_html|raw }}</div>
+</div>

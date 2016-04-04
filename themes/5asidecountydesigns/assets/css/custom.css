@@ -2,7 +2,29 @@
 
 /* Put your custom styles here */
 
+#pc-container {
+    margin-top: 10px;
+}
+
+#at-container {
+    margin-top: 10px;
+}
+#sk-container {
+    margin-top: 10px;
+}
+#tc-container {
+    margin-top: 10px;
+}
+#ns-container {
+    margin-top: 10px;
+}
+
+
 /* LANDING PAGE */
+
+.navbar-brand {
+    padding: 0px;
+}
 
 #sitelogo
 {
@@ -50,10 +72,15 @@
 
 
 
-/* PROFILE PAGE */
+    /*--------------------*/
+    |                     |
+    |  /*PROFILE PAGE */  |
+    |                     |
+    /*--------------------*/
 
-#pc-container {
-    margin-top: 10px;
+
+#pc-col-md-12 {
+    padding: 0;
 }
 #pc-jumbotron {
     padding-right: 47;
@@ -63,8 +90,6 @@
     background-size: cover; 
     background-position: center;
 }
-
-
 
 #pc-container-inner {
     margin-left: -70px;
@@ -91,23 +116,79 @@
 }
 
 
-  /* TACTICS PAGE */
-#tc-container {
-    margin-top: 10px;
+
+    /*--------------------
+    |                     |
+    |  --TACTICS PAGE--   |
+    |                     |
+     --------------------*/
+
+
+#at-col-md-12 {
+    padding: 0px;
 }
-#tc-well img {
-    height: 307px;
+
+#at-jumbotron {
+    padding: 0px;
+    color: #16a085;
+    background-color: #D4D4F0;
 }
-#tc-well1 {
-    width: 156px;
-    margin-top: 50px;
+
+@media (min-width: 767px)
+{
+    #flex-container {
+        display: flex;
+        display: -webkit-flex;
+        height: auto;
+        width: auto;
+        flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+#at-post {
+    margin: 4px 25px;
+    border-bottom: 1px solid gray;
+    height: 50%;
+    width: 23%;
+}
+
+#at-post img {
+    height: 150px;
+    width: 240px;
+}
+
+#at-well {
+    padding: 0px;
+}
+#at-row2 {
+    margin-right: -15px;
+    margin-left: 14px;
+}
+
+hr {
+    margin-bottom: 15px;
+    border-top: 1px solid #C1BDBD;
+}
+
+#at-paraBtn {
+    padding-left: 30px;
 }
 
 
+  
+    /*--------------------
+    |                     |
+    |     SKILLS PAGE     |
+    |                     |
+     ---------------------*/
+    
 
-  /* SKILLS PAGE */
-#sk-container {
-    margin-top: 10px;
+#sk-jumbotron {
+    padding: 0px;
+    color: #16a085;
+    background-color: #D4D4F0;
 }
 
 #sk-well {
@@ -145,7 +226,7 @@
 
 #sk-panel-title3 a {     
     background-image: url('/themes/5asidecountydesigns/assets/images/brazil.jpg'); 
-     background-repeat: no-repeat;
+    background-repeat: no-repeat;
     background-size: cover;
     background-position-y: 52%;
     
@@ -182,65 +263,79 @@
 }
 
 
- /* ARTICLES PAGE */
- 
-#at-container {
-    margin-top: 10px;
+
+    /*-------------------- 
+    |                     |
+    |    TACTICS PAGE     |
+    |                     |
+     --------------------*/
+
+
+#tc-col-md-12 {
+    padding: 0;
+}
+#tc-col-md-6 {
+    padding: 0;
+}
+#tc-jumbotron {
+    padding: 0px;
+    color: #16a085;
+    background-color: #D4D4F0;
+}
+#tc-well img {
+    height: 307px;
+}
+#tc-well1 {
+    width: 156px;
+    margin-top: 50px;
 }
 
-@media (min-width: 767px)
-{
-    #flex-container {
-        display: flex;
-        display: -webkit-flex;
-        height: auto;
-        width: auto;
-    }
-}
 
-#at-post {
-    margin: 4px 25px;
-    border-bottom: 1px solid gray;
-    height: 50%;
-}
+    /*--------------------
+    |                     |
+    |     NEWS PAGE       |
+    |                     |
+     ---------------------*/
+    
 
-#at-post img {
-    height: 150px;
-}
-
-#at-well {
+#ns-col-md-7 {
     padding: 0px;
 }
-#at-row2 {
-    margin-right: -15px;
-    margin-left: 14px;
-}
-
-hr {
-    margin-bottom: 15px;
-    border-top: 1px solid #C1BDBD;
-}
-
-#at-paraBtn {
-    padding-left: 30px;
-}
-
- /* NEWS PAGE */
- 
-#ns-container {
-    margin-top: 10px;
-}
-
 #ns-jumbotron {
     padding: 0px;
-    width: 690px;
+    width: 103%;
+    color: #16a085;
+    background-color: #D4D4F0;
+
+}
+
+#ns-well1 {
+    width: 103%;
+    background-color: #D4D4F0;
+    margin-top: -17px;
 }
 
 #ns-well {
     padding: 0px;
-    width: 428px;
-    margin-left: 49px;
+    width: 438px;
+    margin-left: 22px;
+    background-color: #D4D4F0;
 }
+#ns-well h3 {
+    margin-bottom: 0px;
+    text-align: -webkit-center;
+    font-weight: 400;
+    color: #16a085;
+}
+#ns-well h5 {
+    font-weight: 300;
+    text-align: -webkit-center;
+}
+#ns-well iframe {
+    border-top: 1px solid #C1BDBD;
+}
+
+
 
 
 

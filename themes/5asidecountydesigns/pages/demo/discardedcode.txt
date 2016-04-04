@@ -1,0 +1,143 @@
+public function onChange($id, $input, $profile)
+{
+    // This is only the beginning, scroll to bottom to be horrified.
+    
+    /* $profile_id = Acme\User\Models\User::find($profile_id);
+    $this['account'] = \Auth::getUser();
+    $profile = $this['account']->profile->findOrFail($profile_id);
+    $profile->username = array_merge($profile->username, $this->request->get('profile'));
+    $status_code = config('http.UPDATED');
+    return response()->json($profile->save(), $status_code); */
+    
+    
+    /* $this['account']->onUpdate();
+    $profile = Auth::getUser()->profile;
+    $profile->username = array_merge($profile->username, $this['account']->request->get('profile'));
+    return response()->json($profile->save(), $status_code);*/
+    
+    /* $profile_id = \Auth::find($profile_id);
+    $user = \Auth::user()->whereProfileID($profile_id)->firstOrFail();
+    $user->profile->fill(\Input::all());
+    $user->profile->save(); */
+    
+    
+    
+    
+    
+    
+    /*
+    $profile = new Acme\Profile\Models\Profile(array( 
+    'username' => Request::input('username'),
+    'bio' => Request::input('bio'),
+    ));
+    
+    $this['account'] = new Auth();
+    $this['account']->id->save($profile);
+    */
+    
+    /*
+    $u  = \Auth::getUser();
+    $u->profile->save();
+    
+    $profile = new Profile();
+    $profile->id         = $u->id;
+    $profile->username       = Request::input(['username']);
+    
+    $u->profile()->save($profile);
+    */
+    
+    
+    /* $this['account']  = new \Auth();
+    $this['account']->getUser($a);
+    $this['account']->profile->username = array_merge($this->profile->username, Request::input('username'));
+    
+    $this->save(); */
+    
+    
+    
+    /* $user = \Auth::getUser();
+    ---
+    
+     $user->profile->username = Request::input('username');
+    $user->profile->bio = Request::input('bio');
+    $user->profile->nationality = Request::input('nationality');
+    $user->profile->favourite_team = Request::input('favourite_team');
+    $user->profile->position = Request::input('position');
+    $user->profile->fan_type = Request::input('fan_type');
+    ---
+    $user->profile->username = array_merge($user->profile->username, $this->request->get('username'));
+    $user->profile->save(); */
+    
+    
+    /* $user = \Auth::getUser();
+    
+    $user->profile->username = Request::input('username');
+    $user->profile->bio = Request::input('bio');
+    $user->profile->nationality = Request::input('nationality');
+    $user->profile->favourite_team = Request::input('favourite_team');
+    $user->profile->position = Request::input('position');
+    $user->profile->fan_type = Request::input('fan_type'); */
+    
+    /* $user->profile->username = array_merge($user->profile->username, $this->request->input('username')); */
+    
+    
+    /* $user->profile->save(); */
+    
+    /* 
+    
+    $u = \Auth::getUser();
+    $i = new \Request();
+    
+    $profile = new Acme\Profile\Models\Profile();
+    $profile->id         = $u->id;
+    $profile->username  = $i('username');
+    
+    $u->profile()->save($profile);
+    
+    */
+    
+    /* 
+    
+    $user = Auth::getUser();
+    $user->profile = Request::input(['username',
+    'bio',
+    'nationality',
+    'favourite_team',
+    'position',
+    'fantype',
+    
+    ]);
+    $user->save();
+    
+    */
+    
+    // Get back to this broken mess ASAP
+    /*
+    $user = Auth::getUser();
+    $profile_id = $user->id;
+    $profile = \Acme\Profile\Models\Profile::find($profile_id);
+    $profile->username = Request::input('username');
+    $profile->save();
+    */
+    
+     //$id = \Auth::getUser()->id;
+     //$input = \Request::input('username');
+     //$user = \Profile::findOrFail($id)->update($input);
+    
+    //$user = Auth::getUser();
+    
+    // $user->profile->username = \Request::input('username');
+    //$user->profile->fill(post());
+    //$user->profile->save();
+    
+    $id = \Auth::getUser()->id;
+    $profile = new Acme\Profile\Models\Profile();
+    $input = Request::input([
+    'username' => $profile->username,
+    'bio' => $profile->bio,
+    ]);
+    
+    $this['account'] = $profile->find($id)->update($input);
+    $this['account']->fill(post());
+    $this['account']->save();
+}

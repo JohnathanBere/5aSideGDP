@@ -13,26 +13,31 @@ categoryPage = "news-category"
 postPage = "news-post"
 ==
 <div class="container" id="ns-container">
-    <div class="col-md-7">
+    <div class="col-md-7" id="ns-col-md-7">
         <div class="jumbotron" id="ns-jumbotron">
-            <div class="container" id="ns-container">
+            <div class="container" id="ns-container-inner">
                 <h1>Blog Feed</h1>
             </div>   
         </div>    
-        <div class="well">
+        <div class="well" id="ns-well1">
             <div class="container">
-                {% component 'newsPosts' %}
+                {% for post in posts %}
+                    <h3><a href="{{ post.url }}">{{ post.title }}</a></h3> <h5>Posted on {{ post.published_at|date('d M, Y') }}</h5>
+                      <p>{{ post.summary }}</p>
+                      <a href="{{ post.url }}">Read More</a>
+                {% endfor %}
             </div>
         </div>
     </div>
                 <div class="col-md-5">
-                    <div class="row">
+                <!--    <div class="row"> -->
                         <div class="well" id="ns-well">
-                           <h3>Table</h3>
-                          <iframe src="http://www.tablesleague.com/iframe_page/?id=6eae86a7135c15d22cacc7363e573c8a" width="426" height="1000" frameborder="0" scrolling="yes"></iframe>
+                           <h3>Table</h3><h5>Click on a country or competition to view all related tables</h5>
+                          
+                          <iframe src="http://www.tablesleague.com/iframe_page/?id=6eae86a7135c15d22cacc7363e573c8a" width="435" height="570" frameborder="0" scrolling="yes"></iframe>
                         </div>
                                          
-                    </div>             
+                <!--    </div>   -->          
                             
                 </div>
     

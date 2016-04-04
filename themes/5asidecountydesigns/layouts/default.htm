@@ -51,12 +51,24 @@ security = "all"
                     <!-- Navigation -->
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
+                        {% if not user %}
                             <li class="{% if this.page.id == 'index' %}active{% endif %}"><a href="{{ 'index'|page }}">Home</a></li>
-                            <li class="{% if this.page.id == 'profile' %}active{% endif %}"><a href="{{ 'profile'|page }}">Profile</a></li>
+                        {% endif %}
+                        
+                        {% if user %}
+                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ user.profile.username }}<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ 'profile'|page }}">Profile</a></li>
+                            <li><a href="{{ 'user-edit'|page }}">Account Settings</a></li>
+                            <li><a href="{{ 'profile-edit'|page }}">Profile Settings</a></li>
+                        </ul>
+                        {% endif %}
                             <!-- dropdown button -->
                             <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Learn<span class="caret"></span></a>
                             <ul class="dropdown-menu">
+                            {% if user %}
                                 <li><a href="{{ 'articles'|page }}">Articles</a></li>
+                            {% endif %}
                                 <li role="separator" class="divider"></li>
                                 <li><a href="{{ 'skills'|page }}">Skills</a></li>
                                 <li role="separator" class="divider"></li>

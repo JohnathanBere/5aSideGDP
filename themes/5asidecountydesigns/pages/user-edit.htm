@@ -1,0 +1,18 @@
+title = "Account settings"
+url = "user/edit"
+layout = "default"
+is_hidden = 0
+
+[account]
+paramCode = "code"
+
+[session]
+security = "user"
+redirect = "/#promo-1"
+
+==
+<div class="well">
+    <div class="container">
+        {% component 'account' %}
+    </div>
+</div>

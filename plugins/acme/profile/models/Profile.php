@@ -21,7 +21,7 @@ class Profile extends Model
     /**
      * @var array Fillable fields
      */
-    protected $fillable = [];
+    protected $fillable = ['username','bio', 'favourite_team', 'nationality', 'position', 'fan_type'];
 
     /**
      * @var array Relations
@@ -40,6 +40,10 @@ class Profile extends Model
         $profile->save();
         
         return $profile;
+    }
+    
+    public function getFillable() {
+      return $this->fillable;
     }
 
 }

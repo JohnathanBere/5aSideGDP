@@ -5,6 +5,8 @@ use System\Classes\PluginBase;
 use RainLab\User\Models\User as UserModel;
 use RainLab\User\Controllers\Users as UsersController;
 use Acme\Profile\Models\Profile as ProfileModel;
+use Acme\Profile\Commands\UpdateProfileCommand;
+use Acme\Profile\Requests\UpdateProfileRequest;
 
 /**
  * Profile Plugin Information File
@@ -27,11 +29,14 @@ class Plugin extends PluginBase
         ];
     }
     
+    
+    
     public function boot()
     {
         UserModel::extend(function($model){
                 $model->hasOne['profile'] = ['Acme\Profile\Models\Profile'];
             });
+            
             
         UsersController::extendFormFields(function($form, $model, $context) {
             
@@ -81,6 +86,9 @@ class Plugin extends PluginBase
                     ]);
             });
     }
+    
+    
+    
 
     /**
      * Registers any front-end components implemented in this plugin.
@@ -131,6 +139,26 @@ class Plugin extends PluginBase
                 'order'       => 500,
             ],
         ];
+    }
+    
+    public function updateProfile($id)
+    {
+        $user = ProfileModel::find($id)->update($input);   
+    }
+    
+    public function frontUpdate(UpdateProfileRequest $request, $id)
+    {
+        $username = $request->input('username');
+        $bio = $request->input('bio');
+        $nationality = $request->input('nationality');
+        $favourite_team = $request->input('favourite_team');
+        $position = $request->input('position');
+        $fan_type = $request->input('fan_type');
+        
+        $command = new UpdateProfileCommand($id, $username, $bio, $nationality, $favourite_team, $position, $fan_type);
+        $this->dispatch($command);
+        
+        return Redirect::url('/user/profile/edit');
     }
 
 }

@@ -14,7 +14,10 @@ use ApplicationException;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
 use RainLab\User\Models\Settings as UserSettings;
+use Acme\Profile\Models\Profile;
+use RainLab\User\Models\User;
 use Exception;
+use Illuminate\Support\Facades\DB;
 
 class Account extends ComponentBase
 {
@@ -290,6 +293,8 @@ class Account extends ComponentBase
             return $redirect;
         }
     }
+    
+    
 
     /**
      * Deactivate user
