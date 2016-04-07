@@ -1,6 +1,6 @@
 <?php namespace Acme\Profile\Requests;
 
-use Illuminate\Http\Request;
+use Acme\Profile\Requests\Request;
 
 class UpdateProfileRequest extends Request
 {

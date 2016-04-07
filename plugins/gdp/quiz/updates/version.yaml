@@ -1,0 +1,11 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table gdp_quiz_quiz'
+    - builder_table_create_gdp_quiz_quiz.php
+1.0.3:
+    - 'Created table gdp_quiz_question'
+    - builder_table_create_gdp_quiz_question.php
+1.0.4:
+    - 'Created table gdp_quiz_answer'
+    - builder_table_create_gdp_quiz_answer.php

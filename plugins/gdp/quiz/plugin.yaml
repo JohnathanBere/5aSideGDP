@@ -1,0 +1,6 @@
+plugin:
+    name: 'gdp.quiz::lang.plugin.name'
+    description: 'A neat little plugin in which a user participates in'
+    author: GDP
+    icon: oc-icon-question-circle
+    homepage: ''

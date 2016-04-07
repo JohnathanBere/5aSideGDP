@@ -1,4 +1,4 @@
-title = "Profile"
+title = "Your Profile"
 url = "/profile"
 layout = "default"
 is_hidden = 0
@@ -20,7 +20,7 @@ redirect = "/#promo-1"
             <div class="container" id="pc-container-inner">
                 <!-- <div class=""> -->
                     <div class="col-md-2" id="col-md-2-inner">
-                        <img src="/themes/5asidecountydesigns/assets/images/lincoln.jpg"/>
+                        <img src="{{ user.avatar.path }}"/>
                     </div>
                     <div class="col-md-8">
                             <div class="well" id="pc-well">
@@ -49,5 +49,3 @@ redirect = "/#promo-1"
         </div>
     </div>
 </div>
-
-<a></a>

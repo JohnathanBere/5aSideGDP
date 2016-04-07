@@ -342,11 +342,11 @@ hr {
 /*	HEADER 1 MEDIA QUERIES
 /*----------------------------------------------------*/
 
-/* Smaller devices (Screen sizes, less than 768px) */
+/* Smaller devices(MOBILE VERSION) (Screen sizes, less than 768px) */
 @media(max-width: 479px)
 {
     #sitelogo {
-        font-size: 16px;
+        font-size: 27px;
         padding-top: 1em;
         position: absolute;
         text-align: center;
@@ -359,8 +359,130 @@ hr {
         background-image: url('/themes/5asidecountydesigns/assets/images/stadium.jpg');
         background-position: -9em;
     }
+    
+     /*--------------------
+    |                     |
+    |     PROFILE PAGE    |
+    |                     |
+     ---------------------*/
+     
+#pc-container {
+     padding-left: 0px;
+     padding-right: 0px;
+    
+}
+#pc-container-inner {
+    margin-left: 0px;
+    padding: 0px;
 }
 
+#pc-jumbotron {
+    padding: 0px;
+    margin-top: 0px;
+}
+#col-md-2-inner  {
+    margin-left: 0px;
+}
+
+#col-md-2-inner img {
+    width: 318px;
+    height: 355px;
+    margin-right: 0px; 
+    margin-top: 13px;
+    
+}
+
+
+#pc-col-md-8 {
+    padding: 5px;
+    }
+    
+#pc-well {
+    padding: 10px;
+    }
+    
+#pf-img-btn .btn.btn-default {
+    width: 303px;
+    }
+       
+     /*--------------------
+    |                     |
+    |    ARTICLES PAGE    |
+    |                     |
+     ---------------------*/
+    
+#at-post {
+    border-bottom: 1px solid gray;
+    height: 50%;
+    width: 100%;
+    margin: 0px;
+}
+
+#at-post img {
+    height: 210px;
+    width: 345px;
+}
+#content-post-WC img {
+    padding-right: 5px;
+}
+     /*--------------------
+    |                     |
+    |     SKILLS PAGE     |
+    |                     |
+     ---------------------*/
+     
+    
+    
+    /*-------------------- 
+    |                     |
+    |    TACTICS PAGE     |
+    |                     |
+     --------------------*/
+     
+#tc-well img {
+    width: 100%;
+    height: 100%;
+}
+#tc-col-md-6 {
+    margin-bottom: -35px;
+}
+     
+    
+      /*--------------------
+    |                     |
+    |     NEWS PAGE       |
+    |                     |
+     ---------------------*/
+
+#ns-jumbotron {
+    width: 100%;
+}
+
+#ns-well {
+    margin-left: 0px;
+    width: 326px;
+}
+#ns-well1 {
+    width: 100%;
+   /* background-color: #D5DBDA; */
+}
+ 
+    
+#ns-col-md-5 {
+     display: none;
+    }
+}
+
+
+
+
+
+
+
+/*	HEADER 1 MEDIA QUERIES
+/*----------------------------------------------------*/
+
+/* Medium devices(TABLET VERSION) (Screen sizes, less than 768px) */
 @media (max-width: 767px)
 {
     
@@ -380,6 +502,9 @@ hr {
     }
    
 }
+
+
+
 
 #header-1 .main-nav .nav .dropdown-menu {
     opacity: 0.9;
@@ -404,7 +529,16 @@ hr {
     background: #5A0000;
 }
 
-
+/* MEDIA QUERY FOR EXTREMELY SMALL SCREENS */
+@media(max-width: 359px)
+{
+    #sitelogo {
+        visibility: hidden;
+    }
+    #sitelogo > img {
+        visibility: initial;
+        }
+}
 /* clearing the spaces :) */
 
 .clear-section {

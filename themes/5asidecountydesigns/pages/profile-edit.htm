@@ -9,6 +9,8 @@ paramCode = "code"
 [session]
 security = "user"
 redirect = "/#promo-1"
+
+[imageUploader]
 ==
 use Acme\Profile\Models\Profile;
 use RainLab\User\Controllers\Users;
@@ -19,6 +21,11 @@ public $nationality;
 public $favourite_team;
 public $position;
 public $fan_type;
+
+function onInit()
+{
+    $this->imageUploader->bindModel('avatar', $this->account->user());
+}
 
 public function user()
 {
@@ -43,9 +50,14 @@ public function onChange()
         // If the user has no profile, a record is added.
         $user = Auth::getUser()->profile();
         $user->create([
-            'username' => $username
+            'username' => $username,
+            'bio' => $bio,
+            'nationality' => $nationality,
+            'favourite_team' => $favourite_team,
+            'position' => $position,
+            'fan_type' => $fan_type
         ]);
-        
+
          return Redirect::to('/user/profile/edit/');
     }
      
@@ -61,41 +73,49 @@ public function onChange()
 ==
 <div class="well">
     <div class="container">
-        {{ form_ajax('onChange', { model: user.profile }) }}
-        
-            <div class="form-group">
-                <label for="Form-field-User-profile-username">Username</label>
-                <input name="username" type="textarea" class="form-control" value="{{ form_value('username') }}">
-            </div>
-
-            <div class="form-group">
-                <label for="Form-field-User-profile-bio">Biography</label>
-                <input name="bio" type="textarea" class="form-control" value="{{ form_value('bio') }}">
-            </div>
+        <div class="col-md-7">
+            {{ form_ajax({request: 'onChange'}, { model: user.profile }, {'enc-type': 'multipart/form-data'}) }}
             
-            <div class="form-group">
-                <label for="accountNation">Nationality</label>
-                <input name="nationality" type="textarea" class="form-control" value="{{ form_value('nationality') }}">
-            </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input name="username" type="textarea" class="form-control" value="{{ form_value('username') }}">
+                </div>
+    
+                <div class="form-group">
+                    <label for="bio">Biography</label>
+                    <input name="bio" type="textarea" class="form-control" value="{{ form_value('bio') }}">
+                </div>
+                
+                <div class="form-group">
+                    <label for="nationality">Nationality</label>
+                    <input name="nationality" type="textarea" class="form-control" value="{{ form_value('nationality') }}">
+                </div>
+                
+                <div class="form-group">
+                    <label for="favourite_team">Favourite Team</label>
+                    <input name="favourite_team" type="textarea" class="form-control" value="{{ form_value('favourite_team') }}">
+                </div>
+                
+                <div class="form-group">
+                    <label for="accountPosition">Favourite Position</label>
+                    <input name="position" type="textarea" class="form-control" value="{{ form_value('position') }}">
+                </div>
+                
+                <div class="form-group">
+                    <label for="accountFType">What sort of fan are you?</label>
+                    <input name="fan_type" type="textarea" class="form-control" value="{{ form_value('fan_type') }}">
+                </div>
+                
+                <button type="submit" class="btn btn-success">Save</button>
             
-            <div class="form-group">
-                <label for="accountTeam">Favourite Team</label>
-                <input name="favourite_team" type="textarea" class="form-control" value="{{ form_value('favourite_team') }}">
-            </div>
             
-            <div class="form-group">
-                <label for="accountPosition">Favourite Position</label>
-                <input name="position" type="textarea" class="form-control" value="{{ form_value('position') }}">
-            </div>
-            
-            <div class="form-group">
-                <label for="accountFType">Fan Type</label>
-                <input name="fan_type" type="textarea" class="form-control" value="{{ form_value('fan_type') }}">
-            </div>
-            
-            <button type="submit" class="btn btn-success">Save</button>
-        
-        
-        {{ form_close() }}
+            {{ form_close() }}
+        <div> <!-- /md-7 -->
     </div>
+</div>
+<div class="col-md-5">
+            <label>Change profile pic</label>
+            {{ form_open() }}
+                {% component 'imageUploader' %}
+            {{ form_close() }}
 </div>
