@@ -28,7 +28,7 @@
 
 #sitelogo
 {
-    font-size: 27px;
+    font-size: 21px;
     padding-top: 1em;
     position: absolute;
 }
@@ -532,11 +532,15 @@ hr {
 /* MEDIA QUERY FOR EXTREMELY SMALL SCREENS */
 @media(max-width: 359px)
 {
-    #sitelogo {
-        visibility: hidden;
+   #sitelogo {
+        /* visibility: hidden; */
+        font-size: 21px;
+        padding-left: 35px;
+        padding-top: 28px;
     }
     #sitelogo > img {
-        visibility: initial;
+        /*visibility: initial; */
+        display: none;
         }
 }
 /* clearing the spaces :) */
