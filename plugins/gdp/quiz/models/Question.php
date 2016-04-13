@@ -8,12 +8,14 @@ use Model;
 class Question extends Model
 {
     use \October\Rain\Database\Traits\Validation;
-
+    
     /*
      * Validation
      */
     public $rules = [
     ];
+    
+    public $primaryKey = 'id';
 
     /*
      * Disable timestamps by default.
@@ -25,5 +27,11 @@ class Question extends Model
      * @var string The database table used by the model.
      */
     public $table = 'gdp_quiz_question';
-    protected $fillable = ['sentence'];
+    protected $fillable = ['sentence, quiz_id'];
+    public $belongsTo = [
+            'quiz' => ['Gdp\Quiz\Models\Quiz']
+        ];
+    public $hasMany = [
+            'answers' => ['Gdp\Quiz\Models\Answer']
+        ];
 }

@@ -1,0 +1,13 @@
+fields:
+    caption:
+        label: 'gdp.quiz::lang.answer.caption'
+        span: auto
+        type: text
+    flag:
+        label: 'gdp.quiz::lang.answer.flag'
+        span: auto
+        type: checkbox
+    question_id:
+        label: 'Cite Question ID'
+        span: auto
+        type: number

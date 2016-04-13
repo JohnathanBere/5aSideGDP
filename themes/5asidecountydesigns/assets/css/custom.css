@@ -1,5 +1,4 @@
 
-
 /* Put your custom styles here */
 
 #pc-container {
@@ -20,322 +19,10 @@
 }
 
 
-/* LANDING PAGE */
-
-.navbar-brand {
-    padding: 0px;
-}
-
-#sitelogo
-{
-    font-size: 21px;
-    padding-top: 1em;
-    position: absolute;
-}
-
-#sitelogo > img
-{
-    height:60px;
-    position: relative;
-    float: left;
-    top: -20px;
-}
-
-#header-1 .main-nav .navbar-nav > li.active a
-{
-    color: #ffffff;
-    background: none;
-}
-#header-1 .main-nav .navbar-nav > li a:hover
-{
-    color: #ffffff;
-    background: #8e0000;
-}
-
-#header-1 .main-nav .navbar-nav > li a {
-	border-right: 1px solid white;
-}
-#header-1 .main-nav .nav {
-    margin-top: 12px;
-    margin-right: 1px;
-}
-
-#promo-1 {
-    background-image: url('/themes/5asidecountydesigns/assets/images/stadium.jpg');
-    background-attachment: fixed;
-    color: white;
-}
-
-#promo-3 {
-    background-image: url('/themes/5asidecountydesigns/assets/images/16533.jpg');
-}
-
-
-
-    /*--------------------*/
-    |                     |
-    |  /*PROFILE PAGE */  |
-    |                     |
-    /*--------------------*/
-
-
-#pc-col-md-12 {
-    padding: 0;
-}
-#pc-jumbotron {
-    padding-right: 47;
-    color: #000000;
-    background-image: url('/themes/5asidecountydesigns/assets/images/16533.jpg'); 
-    background-repeat: no-repeat; 
-    background-size: cover; 
-    background-position: center;
-}
-
-#pc-container-inner {
-    margin-left: -70px;
-}
-#col-md-2-inner {
-    margin-right: 118px;
-}
-#col-md-2-inner img {
-    height: 300px;
-    width: 235px;
-    margin-right: 158px; 
-    border-radius: 12px;
-}
-#pc-well {
-    opacity: 0.5;
-    background-color: #000000;
-    color: #ffffff;
-}
-#pc-well p {
-    color: #ffffff;
-}
-#pc-well .table {
-    text-align: center;
-}
-
-
-
-    /*--------------------
-    |                     |
-    |  --TACTICS PAGE--   |
-    |                     |
-     --------------------*/
-
-
-#at-col-md-12 {
-    padding: 0px;
-}
-
-#at-jumbotron {
-    padding: 0px;
-    color: #16a085;
-    background-color: #D4D4F0;
-}
-
-@media (min-width: 767px)
-{
-    #flex-container {
-        display: flex;
-        display: -webkit-flex;
-        height: auto;
-        width: auto;
-        flex-wrap: wrap;
-        -webkit-flex-wrap: wrap;
-        justify-content: center;
-    }
-}
-
-#at-post {
-    margin: 4px 25px;
-    border-bottom: 1px solid gray;
-    height: 50%;
-    width: 23%;
-}
-
-#at-post img {
-    height: 150px;
-    width: 240px;
-}
-
-#at-well {
-    padding: 0px;
-}
-#at-row2 {
-    margin-right: -15px;
-    margin-left: 14px;
-}
-
 hr {
     margin-bottom: 15px;
     border-top: 1px solid #C1BDBD;
 }
-
-#at-paraBtn {
-    padding-left: 30px;
-}
-
-
-  
-    /*--------------------
-    |                     |
-    |     SKILLS PAGE     |
-    |                     |
-     ---------------------*/
-    
-
-#sk-jumbotron {
-    padding: 0px;
-    color: #16a085;
-    background-color: #D4D4F0;
-}
-
-#sk-well {
-    padding: 5px;
-    margin-bottom: 10px;
-    text-align: center;
-    background-color: #E6DBDB;
-}
-#sk-panel-title a {
-    padding: 0px;
-}
-.panel-title img {
-    height: 61px;
-    padding: 4px;
-}
-
-#sk-panel-title a {     
-    background-image: url('/themes/5asidecountydesigns/assets/images/brazil.jpg'); 
-    background-repeat: no-repeat; 
-    background-size: cover; 
-    background-position-y: 0%;
-    
-}
-#sk-panel-title2 a {
-    padding: 0px;
-    background-image: url('/themes/5asidecountydesigns/assets/images/brazil.jpg'); 
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position-y: 26%;
-}
-
-#sk-panel-title3 a {
-    padding: 0px;
-}
-
-#sk-panel-title3 a {     
-    background-image: url('/themes/5asidecountydesigns/assets/images/brazil.jpg'); 
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position-y: 52%;
-    
-}
-#sk-panel-title4 a {
-    padding: 0px;
-}
-
-#sk-panel-title4 a {     
-    background-image: url('/themes/5asidecountydesigns/assets/images/brazil.jpg'); 
-     background-repeat: no-repeat;
-    background-size: cover;
-    background-position-y: 78%;
-    
-}
-#sk-panel-title5 a {
-    padding: 0px;
-}
-
-#sk-panel-title5 a {     
-    background-image: url('/themes/5asidecountydesigns/assets/images/brazil.jpg'); 
-     background-repeat: no-repeat;
-    background-size: cover;
-    background-position-y: 100%;
-    
-}
-
-.panel-group .panel + .panel {
-    margin-top: 3px;
-}
-
-.panel-group {
-    margin-bottom: 5px;
-}
-
-
-
-    /*-------------------- 
-    |                     |
-    |    TACTICS PAGE     |
-    |                     |
-     --------------------*/
-
-
-#tc-col-md-12 {
-    padding: 0;
-}
-#tc-col-md-6 {
-    padding: 0;
-}
-#tc-jumbotron {
-    padding: 0px;
-    color: #16a085;
-    background-color: #D4D4F0;
-}
-#tc-well img {
-    height: 307px;
-}
-#tc-well1 {
-    width: 156px;
-    margin-top: 50px;
-}
-
-
-    /*--------------------
-    |                     |
-    |     NEWS PAGE       |
-    |                     |
-     ---------------------*/
-    
-
-#ns-col-md-7 {
-    padding: 0px;
-}
-#ns-jumbotron {
-    padding: 0px;
-    width: 103%;
-    color: #16a085;
-    background-color: #D4D4F0;
-
-}
-
-#ns-well1 {
-    width: 103%;
-    background-color: #D4D4F0;
-    margin-top: -17px;
-}
-
-#ns-well {
-    padding: 0px;
-    width: 438px;
-    margin-left: 22px;
-    background-color: #D4D4F0;
-}
-#ns-well h3 {
-    margin-bottom: 0px;
-    text-align: -webkit-center;
-    font-weight: 400;
-    color: #16a085;
-}
-#ns-well h5 {
-    font-weight: 300;
-    text-align: -webkit-center;
-}
-#ns-well iframe {
-    border-top: 1px solid #C1BDBD;
-}
-
-
 
 
 
@@ -355,122 +42,8 @@ hr {
     #sitelogo > img {
             visibility: hidden;
     }
-    #promo-1 {
-        background-image: url('/themes/5asidecountydesigns/assets/images/stadium.jpg');
-        background-position: -9em;
-    }
+   
     
-     /*--------------------
-    |                     |
-    |     PROFILE PAGE    |
-    |                     |
-     ---------------------*/
-     
-#pc-container {
-     padding-left: 0px;
-     padding-right: 0px;
-    
-}
-#pc-container-inner {
-    margin-left: 0px;
-    padding: 0px;
-}
-
-#pc-jumbotron {
-    padding: 0px;
-    margin-top: 0px;
-}
-#col-md-2-inner  {
-    margin-left: 0px;
-}
-
-#col-md-2-inner img {
-    width: 318px;
-    height: 355px;
-    margin-right: 0px; 
-    margin-top: 13px;
-    
-}
-
-
-#pc-col-md-8 {
-    padding: 5px;
-    }
-    
-#pc-well {
-    padding: 10px;
-    }
-    
-#pf-img-btn .btn.btn-default {
-    width: 303px;
-    }
-       
-     /*--------------------
-    |                     |
-    |    ARTICLES PAGE    |
-    |                     |
-     ---------------------*/
-    
-#at-post {
-    border-bottom: 1px solid gray;
-    height: 50%;
-    width: 100%;
-    margin: 0px;
-}
-
-#at-post img {
-    height: 210px;
-    width: 345px;
-}
-#content-post-WC img {
-    padding-right: 5px;
-}
-     /*--------------------
-    |                     |
-    |     SKILLS PAGE     |
-    |                     |
-     ---------------------*/
-     
-    
-    
-    /*-------------------- 
-    |                     |
-    |    TACTICS PAGE     |
-    |                     |
-     --------------------*/
-     
-#tc-well img {
-    width: 100%;
-    height: 100%;
-}
-#tc-col-md-6 {
-    margin-bottom: -35px;
-}
-     
-    
-      /*--------------------
-    |                     |
-    |     NEWS PAGE       |
-    |                     |
-     ---------------------*/
-
-#ns-jumbotron {
-    width: 100%;
-}
-
-#ns-well {
-    margin-left: 0px;
-    width: 326px;
-}
-#ns-well1 {
-    width: 100%;
-   /* background-color: #D5DBDA; */
-}
- 
-    
-#ns-col-md-5 {
-     display: none;
-    }
 }
 
 
@@ -487,22 +60,14 @@ hr {
 {
     
     #header-1 .navbar-collapse {
-       
         background-color: #C52000;
-        
-    }
+    }  
     #header-1 .main-nav .navbar-nav > li a {
-       
-        /*border-bottom-width: 1px;*/
-        /*border-bottom-style: solid;*/
-        /*border-bottom-color: white;*/
         border-right: none;
-    	
-        
-    }
-   
 }
 
+    
+}
 
 
 
@@ -529,6 +94,7 @@ hr {
     background: #5A0000;
 }
 
+
 /* MEDIA QUERY FOR EXTREMELY SMALL SCREENS */
 @media(max-width: 359px)
 {
@@ -546,5 +112,6 @@ hr {
 /* clearing the spaces :) */
 
 .clear-section {
-    height: 10px;
+    margin: 0;
+    padding: 0;
 }

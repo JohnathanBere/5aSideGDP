@@ -1,0 +1,28 @@
+title = "Quiz"
+url = "/quiz/:slug*/:id"
+layout = "default"
+is_hidden = 0
+
+[builderDetails]
+modelClass = "Gdp\Quiz\Models\Quiz"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+==
+use Gdp\Quiz\Models\Question;
+
+function onInit()
+{
+    $id = $this->param('id');
+    $this['questions'] = Question::find($id);
+    $this['answers'] = Question::find($id)->answers;
+}
+==
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+{% for question in questions %}
+    <p>{{ question.sentence }}</p>
+{% endfor %}

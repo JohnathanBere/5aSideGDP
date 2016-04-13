@@ -1,0 +1,96 @@
+  /*--------------------
+    |                     |
+    |     SKILLS PAGE     |
+    |                     |
+     ---------------------*/
+    
+
+#sk-jumbotron {
+    padding: 0px;
+    color: #16a085;
+    background-color: #D4D4F0;
+}
+
+#sk-well {
+    padding: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    background-color: #E6DBDB;
+}
+#sk-panel-title a {
+    padding: 0px;
+}
+.panel-title img {
+    height: 61px;
+    padding: 4px;
+}
+
+#sk-panel-title a {     
+    background-image: url('/themes/5asidecountydesigns/assets/images/brazil.jpg'); 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position-y: 0%;
+    
+}
+#sk-panel-title2 a {
+    padding: 0px;
+    background-image: url('/themes/5asidecountydesigns/assets/images/brazil.jpg'); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 26%;
+}
+
+#sk-panel-title3 a {
+    padding: 0px;
+}
+
+#sk-panel-title3 a {     
+    background-image: url('/themes/5asidecountydesigns/assets/images/brazil.jpg'); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 52%;
+    
+}
+#sk-panel-title4 a {
+    padding: 0px;
+}
+
+#sk-panel-title4 a {     
+    background-image: url('/themes/5asidecountydesigns/assets/images/brazil.jpg'); 
+     background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 78%;
+    
+}
+#sk-panel-title5 a {
+    padding: 0px;
+}
+
+#sk-panel-title5 a {     
+    background-image: url('/themes/5asidecountydesigns/assets/images/brazil.jpg'); 
+     background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 100%;
+    
+}
+
+.panel-group .panel + .panel {
+    margin-top: 3px;
+}
+
+.panel-group {
+    margin-bottom: 5px;
+}
+
+/* Smaller devices(MOBILE VERSION) (Screen sizes, less than 768px) */
+@media screen and (max-width: 479px)
+{
+    
+}
+
+/* Medium devices(TABLET VERSION) (Screen sizes, less than 768px) */
+@media screen and (min-width: 480px) and (max-width: 769px)
+{
+    
+    
+}

@@ -1,0 +1,16 @@
+fields:
+    title:
+        label: 'gdp.quiz::lang.quiz.title'
+        span: auto
+        type: text
+    slug:
+        label: 'gdp.quiz::lang.quiz.slug'
+        span: auto
+        preset:
+            field: title
+            type: slug
+        type: text
+    description:
+        label: 'gdp.quiz::lang.quiz.description'
+        span: auto
+        type: text

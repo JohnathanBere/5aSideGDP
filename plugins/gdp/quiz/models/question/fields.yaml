@@ -1,0 +1,11 @@
+fields:
+    sentence:
+        label: 'gdp.quiz::lang.question.sentence'
+        span: auto
+        size: large
+        required: 1
+        type: richeditor
+    quiz_id:
+        label: 'gdp.quiz::lang.quiz.quiz_id'
+        span: auto
+        type: number

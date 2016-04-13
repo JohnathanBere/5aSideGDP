@@ -15,12 +15,12 @@ redirect = "/#promo-1"
 
 <div class="container" id="pc-container">
     <div class="col-md-12" id="pc-col-md-12">
-        <div class="jumbotron" id="pc-jumbotron" style="">
+        <div class="jumbotron" id="pc-jumbotron" style="background-image:url('{{ 'assets/images/16533.jpg' | theme }}')">
             
             <div class="container" id="pc-container-inner">
                 <!-- <div class=""> -->
                     <div class="col-md-2" id="col-md-2-inner">
-                        <img src="{{ user.avatar.path }}"/>
+                        <img class="img-responsive" src="{{ user.avatar.path }}"/>
                     </div>
                     <div class="col-md-8">
                             <div class="well" id="pc-well">

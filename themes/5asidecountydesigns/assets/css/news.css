@@ -1,0 +1,115 @@
+/*--------------------
+    |                     |
+    |     NEWS PAGE       |
+    |                     |
+     ---------------------*/
+    
+
+#ns-col-md-12-1 {
+    padding: 0px;
+    width: 97%;
+}
+
+
+#ns-col-md-7 {
+    
+    width: 55%;
+    float: left;
+}
+#ns-col-md-7 .panel{
+background-color: #D4D4F0;
+}
+#ns-col-md-5 {
+    float: right;
+    width: 45%;
+    }
+#ns-col-md-5 .panel{
+background-color: #D4D4F0;
+}
+#ns-jumbotron {
+    padding: 0px;
+    width: 103%;
+    color: #16a085;
+    background-color: #D4D4F0;
+
+}
+
+#ns-well1 {
+    width: 690px;
+    background-color: #D4D4F0;
+    margin-top: -17px;
+}
+
+#ns-well {
+    padding: 0px;
+    width: 438px;
+    margin-left: 22px;
+    background-color: #D4D4F0;
+    margin-top: -16px;
+}
+#ns-well h3 {
+    margin-bottom: 0px;
+    text-align: -webkit-center;
+    font-weight: 400;
+    color: #16a085;
+}
+#ns-well h5 {
+    font-weight: 300;
+    text-align: -webkit-center;
+}
+#ns-well iframe {
+    border-top: 1px solid #C1BDBD;
+}
+
+
+/* Smaller devices(MOBILE VERSION) (Screen sizes, less than 480px) */
+@media screen and (max-width: 479px)
+{
+ 
+     
+#ns-col-md-12-1 {
+    padding: 0px;
+    width: 100%; 
+}
+
+
+#ns-jumbotron {
+    width: 100%;
+}
+
+#ns-well {
+    margin-left: 0px;
+    width: 326px;
+}
+#ns-well1 {
+    width: 100%;
+   /* background-color: #D5DBDA; */
+}
+ #ns-col-md-5 {
+     display: none;
+ }
+ #ns-col-md-7 {
+     width: 100%;
+     }   
+}
+
+
+/* Medium devices(TABLET VERSION) (Screen sizes, less than 768px) */
+@media screen and (min-width: 480px) and (max-width: 769px)
+{
+    #ns-col-md-12-1 {
+        float: none;
+    }
+    #leaguePanel{
+        width: 90%;
+    }
+    
+    #ns-col-md-7 {
+     float: left;
+ }
+ 
+ #ns-col-md-5 {
+     float: right;
+     width: 40%;
+     }
+}

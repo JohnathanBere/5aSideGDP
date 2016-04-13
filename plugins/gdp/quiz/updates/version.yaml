@@ -9,3 +9,6 @@
 1.0.4:
     - 'Created table gdp_quiz_answer'
     - builder_table_create_gdp_quiz_answer.php
+1.0.5:
+    - 'Created table gdp_quiz_score'
+    - builder_table_create_gdp_quiz_score.php

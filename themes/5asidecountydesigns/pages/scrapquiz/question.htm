@@ -1,0 +1,21 @@
+title="Question"
+url="quiz/question/show/:id"
+layout="default"
+==
+use Gdp\Quiz\Models\Question;
+public function onInit()
+{
+    $id = $this->param('id');
+    $this['questions'] = Question::find($id);
+    $this['answers'] = Question::find($id)->answers;
+}
+==
+<div class="container">
+    <p>{{ questions.sentence | raw }}</p>
+    {% for answer in answers %}
+        <div>
+            <label for="answers">{{ answer.caption }}<input name="answers" type="radio" value="{{ form_value('flag') }}"></label>
+        </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-success">Submit</button>
+</div>

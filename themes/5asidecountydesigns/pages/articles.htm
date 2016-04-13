@@ -29,7 +29,7 @@ redirect = "index"
             {% for post in posts %}
                 <div id="at-post">
                 {% for image in post.featured_images %}
-                    <img src="{{ image.path }}" />
+                    <img class="img-responsive" src="{{ image.path }}" />
                 {% endfor %}
                       <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
                       <p>{{ post.summary }}</p>

@@ -13,6 +13,7 @@ class BuilderTableCreateGdpQuizAnswer extends Migration
             $table->increments('id');
             $table->integer('question_id')->unsigned()->index();
             $table->text('caption')->nullable();
+            $table->boolean('flag')->nullable();
         });
     }
     

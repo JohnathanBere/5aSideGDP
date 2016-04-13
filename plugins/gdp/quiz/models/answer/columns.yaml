@@ -1,0 +1,16 @@
+columns:
+    caption:
+        label: 'gdp.quiz::lang.answer.caption'
+        type: text
+        searchable: true
+        sortable: true
+    id:
+        label: id
+        type: number
+        searchable: true
+        sortable: true
+    question_id:
+        label: question_id
+        type: number
+        searchable: true
+        sortable: true

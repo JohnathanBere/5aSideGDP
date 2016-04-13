@@ -1,0 +1,100 @@
+ /*--------------------*/
+    |                     |
+    |  /*PROFILE PAGE */  |
+    |                     |
+    /*--------------------*/
+
+
+#pc-col-md-12 {
+    padding: 0;
+}
+#pc-jumbotron {
+    padding-right: 47;
+    color: #000000;
+    background-image: url('/themes/5asidecountydesigns/assets/images/16533.jpg'); 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center;
+}
+
+#pc-container-inner {
+    margin-left: -70px;
+}
+#col-md-2-inner {
+    width: 30%;
+}
+#col-md-2-inner img {
+     border-radius: 12px;
+}
+#pc-well {
+    opacity: 0.5;
+    background-color: #000000;
+    color: #ffffff;
+}
+#pc-well p {
+    color: #ffffff;
+}
+#pc-well .table {
+    text-align: center;
+}
+
+
+/* Smaller devices(MOBILE VERSION) (Screen sizes, less than 768px) */
+@media screen and (max-width: 479px)
+{
+    
+
+
+   /*--------------------
+    |                     |
+    |     PROFILE PAGE    |
+    |                     |
+     ---------------------*/
+     
+#pc-container {
+     padding-left: 0px;
+     padding-right: 0px;
+    
+}
+#pc-container-inner {
+    margin-left: 0px;
+    padding: 0px;
+}
+
+#pc-jumbotron {
+    padding: 0px;
+    margin-top: 0px;
+}
+#col-md-2-inner  {
+    margin-top: 5px;
+    width: 100%;
+}
+
+#col-md-2-inner img {
+   border-radius: 12px;
+    
+}
+
+
+#pc-col-md-8 {
+    padding: 5px;
+}
+    
+#pc-well {
+    padding: 10px;
+}
+    
+#pf-img-btn .btn.btn-default {
+    width: 303px;
+    }
+}
+
+
+
+
+/* Medium devices(TABLET VERSION) (Screen sizes, less than 768px) */
+@media screen and (min-width: 480px) and (max-width: 769px)
+{
+    
+    
+}

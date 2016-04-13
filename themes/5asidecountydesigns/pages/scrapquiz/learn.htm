@@ -1,0 +1,57 @@
+title = "Learn"
+url = "/learn/:id"
+layout = "default"
+==
+use Gdp\Quiz\Models\Quiz;
+use Gdp\Quiz\Models\Question;
+use Gdp\Quiz\Models\Answer;
+
+function onInit()
+{
+    $id = $this->param('id');
+    $this['quiz'] = Quiz::find($id);
+    $this['questions'] = Question::where('quiz_id', $id)->get();
+    
+    
+    // $this['answers'] = Answer::where('question_id', $question_id)->get();
+    
+    $this['answers'] = Answer::where('question_id', $id)->get();
+    
+    
+    
+    
+    
+    /*
+    $this['questions'] = Question::where([
+    'quiz_id' => $id,
+    ])->get();
+    */
+    
+    
+    
+    
+    
+    /*
+    $this['answers'] = Answer::where([
+        'question_id' => 1,
+    ])->get();
+    */
+}
+==
+<h1>{{ quiz.title }}</h1>
+{% for question in questions %}
+    <h1>{{ question.sentence | raw }}</h1>
+    <h2>{{ question.id }}</h3>
+    <h2> belongs to quiz with id of {{ question.quiz_id }}</h3>
+    {% for answer in answers %}
+        {% if not answer.question_id == question.id %}
+        
+        {% else %}
+        <p>{{ answer.caption }}</p>
+        <p>{{ answer.id }}</p>
+        <p>belongs to question with id of {{ answer.question_id }}</p>
+        {% endif %}
+    {% else %}
+        <p>Nothing right now</p>
+    {% endfor %}
+{% endfor %}

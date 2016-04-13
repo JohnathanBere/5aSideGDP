@@ -1,0 +1,11 @@
+columns:
+    title:
+        label: 'gdp.quiz::lang.quiz.title'
+        type: text
+        searchable: true
+        sortable: true
+    id:
+        label: id
+        type: number
+        searchable: true
+        sortable: true

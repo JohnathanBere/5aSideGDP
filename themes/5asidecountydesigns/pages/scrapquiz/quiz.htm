@@ -1,0 +1,83 @@
+title = "Quiz"
+url = "/quiz/view/:slug"
+layout = "default"
+is_hidden = 0
+
+[builderDetails]
+modelClass = "Gdp\Quiz\Models\Quiz"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+
+[builderList]
+modelClass = "Gdp\Quiz\Models\Question"
+scope = "-"
+displayColumn = "sentence"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList answerList]
+modelClass = "Gdp\Quiz\Models\Answer"
+scope = "-"
+displayColumn = "caption"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+<!-- default builderDetails component referring to Quiz Model -->
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+<!-- default builderList component referring to Question Model -->
+{% set records = builderList.records %}
+{% set qDisplayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+<!-- aliased the builderList component as answerList to display 
+list of possible answers within a question item -->
+{% set aRecords = answerList.records %}
+{% set aDisplayColumn = answerList.displayColumn %}
+{% set aNoRecordsMessage = answerList.noRecordsMessage %}
+{% set aDetailsPage = answerList.detailsPage %}
+{% set aDetailsKeyColumn = answerList.detailsKeyColumn %}
+{% set aDetailsUrlParameter = answerList.detailsUrlParameter %}
+
+
+{% if record %}
+
+    {{ attribute(record, displayColumn) }}
+{% else %}
+    {{ notFoundMessage }}
+{% endif %}
+
+{% for record in records if record %}
+    <li>
+        {# Use spaceless tag to remove spaces inside the A tag. #}
+        {% spaceless %}
+
+            {{ attribute(record, qDisplayColumn) | raw }}
+            
+            <!-- answerList -->
+            
+                {% for record in aRecords if record %}
+                    <li>
+                            {{ attribute(record, aDisplayColumn) | raw }}
+                    </li>
+                {% else %}
+                    <li class="no-data">{{ aNoRecordsMessage }}</li>
+                {% endfor %}
+            
+            <!-- /answerList -->
+        {% endspaceless %}
+    </li>
+{% else %}
+    <li class="no-data">{{ noRecordsMessage }}</li>
+{% endfor %}

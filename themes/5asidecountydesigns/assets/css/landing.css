@@ -1,0 +1,62 @@
+/* LANDING PAGE */
+
+.navbar-brand {
+    padding: 0px;
+}
+
+#sitelogo
+{
+    font-size: 21px;
+    padding-top: 1em;
+    position: absolute;
+}
+
+#sitelogo > img
+{
+    height:60px;
+    position: relative;
+    float: left;
+    top: -20px;
+}
+
+#header-1 .main-nav .navbar-nav > li.active a
+{
+    color: #ffffff;
+    background: none;
+}
+#header-1 .main-nav .navbar-nav > li a:hover
+{
+    color: #ffffff;
+    background: #8e0000;
+}
+
+#header-1 .main-nav .navbar-nav > li a {
+	border-right: 1px solid white;
+}
+#header-1 .main-nav .nav {
+    margin-top: 12px;
+    margin-right: 1px;
+}
+
+#promo-1 {
+    background-image: url('/themes/5asidecountydesigns/assets/images/stadium.jpg');
+    background-attachment: fixed;
+    color: white;
+}
+
+#promo-3 {
+   background-image: url('/themes/5asidecountydesigns/assets/images/16533.jpg');
+}
+
+
+/* Smaller devices(MOBILE VERSION) (Screen sizes, less than 768px) */
+@media screen and (max-width: 479px)
+{
+   
+    
+ #promo-1 {
+        background-image: url('/themes/5asidecountydesigns/assets/images/stadium.jpg');
+        background-position: -9em;
+    }
+    
+}

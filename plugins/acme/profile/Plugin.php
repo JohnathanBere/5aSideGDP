@@ -145,20 +145,5 @@ class Plugin extends PluginBase
     {
         $user = ProfileModel::find($id)->update($input);   
     }
-    
-    public function frontUpdate(UpdateProfileRequest $request, $id)
-    {
-        $username = $request->input('username');
-        $bio = $request->input('bio');
-        $nationality = $request->input('nationality');
-        $favourite_team = $request->input('favourite_team');
-        $position = $request->input('position');
-        $fan_type = $request->input('fan_type');
-        
-        $command = new UpdateProfileCommand($id, $username, $bio, $nationality, $favourite_team, $position, $fan_type);
-        $this->dispatch($command);
-        
-        return Redirect::url('/user/profile/edit');
-    }
 
 }

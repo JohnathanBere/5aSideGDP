@@ -1,0 +1,14 @@
+title = "Take"
+url = "quiz/show/:id"
+layout = "default"
+==
+use Gdp\Quiz\Models\Quiz;
+
+public function onInit()
+{
+    $id = $this->param('id');
+    $this['quizzes'] = Quiz::find($id);
+}
+==
+<h1>{{ quizzes.title }}</h1>
+<p>{{ quizzes.description }}</p>

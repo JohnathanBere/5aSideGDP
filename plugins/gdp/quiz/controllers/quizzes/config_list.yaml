@@ -1,0 +1,11 @@
+title: Quizzes
+modelClass: Gdp\Quiz\Models\Quiz
+list: $/gdp/quiz/models/quiz/columns.yaml
+recordUrl: 'gdp/quiz/quizzes/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

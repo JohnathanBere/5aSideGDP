@@ -1,0 +1,11 @@
+name: Quizzes
+modelClass: Gdp\Quiz\Models\Quiz
+form: $/gdp/quiz/models/quiz/fields.yaml
+defaultRedirect: gdp/quiz/quizzes
+create:
+    redirect: 'gdp/quiz/quizzes/update/:id'
+    redirectClose: gdp/quiz/quizzes
+update:
+    redirect: gdp/quiz/quizzes
+    redirectClose: gdp/quiz/quizzes
+preview: {  }

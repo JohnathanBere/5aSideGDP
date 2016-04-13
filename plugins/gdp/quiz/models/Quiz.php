@@ -27,4 +27,16 @@ class Quiz extends Model
     public $table = 'gdp_quiz_quiz';
     
     protected $fillable = ['description'];
+    
+    public $hasMany = [
+            'questions' => ['Gdp\Quiz\Models\Question']
+        ];
+
+        
+    /* public $hasManyThrough = [
+            'answers' => [
+                    'Gdp\Quiz\Models\Answer',
+                    'through' => 'Gdp\Quiz\Models\Question'
+                ],
+        ]; */
 }

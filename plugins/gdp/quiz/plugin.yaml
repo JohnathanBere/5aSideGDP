@@ -4,3 +4,27 @@ plugin:
     author: GDP
     icon: oc-icon-question-circle
     homepage: ''
+permissions:
+    gdp.quiz.manage_quiz:
+        tab: 'gdp.quiz::lang.plugin.name'
+        label: 'gdp.quiz::lang.quiz.manage_quizzes'
+navigation:
+    quiz:
+        label: Quiz
+        url: gdp/quiz/quizzes
+        icon: icon-question-circle
+        permissions:
+            - gdp.quiz.manage_quiz
+        sideMenu:
+            quizzes:
+                label: Quizzes
+                url: gdp/quiz/quizzes
+                icon: icon-newspaper-o
+            questions:
+                label: Questions
+                url: gdp/quiz/questions
+                icon: icon-question
+            answers:
+                label: Answers
+                url: gdp/quiz/answers
+                icon: icon-exclamation

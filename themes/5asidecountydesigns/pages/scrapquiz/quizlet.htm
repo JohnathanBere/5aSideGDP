@@ -1,0 +1,23 @@
+title = "QuizLet"
+url = "/quizlet/:id"
+layout = "default"
+is_hidden = 0
+==
+use Gdp\Quiz\Models\Quiz;
+use Gdp\Quiz\Models\Answer;
+use Gdp\Quiz\Models\Question;
+
+function onInit()
+{
+    $id = $this->param('id');
+    $this['quiz'] = Quiz::find($id);
+    $this['questions'] = $this->quiz->questions;
+}
+==
+{{ quiz.title }}
+{% for question in questions %}
+    {{ question.sentence | raw }}
+    {% for answer in answers %}
+        {{ answer.caption }}
+    {% endfor %}
+{% endfor %}

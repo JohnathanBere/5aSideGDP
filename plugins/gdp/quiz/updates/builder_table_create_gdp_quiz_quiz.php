@@ -11,7 +11,9 @@ class BuilderTableCreateGdpQuizQuiz extends Migration
         {
             $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->string('title')->nullable();
             $table->text('description')->nullable();
+            $table->string('slug')->nullable();
         });
     }
     
