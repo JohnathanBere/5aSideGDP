@@ -32,6 +32,10 @@ class Quiz extends Model
             'questions' => ['Gdp\Quiz\Models\Question']
         ];
 
+    /* public $belongsTo = [
+            'score' => ['Acme\Profile\Models\Score']
+        ];
+        */
         
     /* public $hasManyThrough = [
             'answers' => [

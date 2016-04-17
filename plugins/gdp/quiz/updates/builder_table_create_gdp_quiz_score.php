@@ -10,9 +10,8 @@ class BuilderTableCreateGdpQuizScore extends Migration
         Schema::create('gdp_quiz_score', function($table)
         {
             $table->engine = 'InnoDB';
-            $table->increments('id')->unsigned();
-            $table->integer('profile_id')->unsigned();
-            $table->integer('quiz_id')->unsigned();
+            $table->increments('id');
+            $table->integer('profile_id')->unsigned()->index();
             $table->double('total_score', 10, 0)->nullable();
         });
     }

@@ -1,5 +1,5 @@
 title = "Quiz"
-url = "/showquiz/:slug"
+url = "quiz/post/:slug"
 layout = "default"
 is_hidden = 0
 
@@ -40,39 +40,13 @@ use Acme\Profile\Models\Profile;
 use Gdp\Quiz\Models\Quiz;
 use Gdp\Quiz\Models\Score;
 use Gdp\Quiz\Models\Answer;
+use Gdp\Quiz\Models\Question;
 
 public $points;
 
-public function profile()
+    public function quizSubmit()
 {
-    if (!Auth::check()) {
-        return null;
-    }
-
-    return Auth::getUser()->profile;
-}
-
-public function quizSubmit()
-{
-    $score = Score::where('profile_id', Auth::user()->profile->id)->first();
     
-    $points = Request::input('flag');
-    
-        if(!$score = $this->profile()->score()) {
-            $score = new Score();
-            $score->profile_id = Auth::user()->profile()->id;
-            $score->save();
-        }
-        
-        $quiz = Quiz::get();
-        $quiz->score_id = $score->id;
-        $question = Question::get();
-        $question->quiz_id = $quiz->id;
-        $answer = Answer::get();
-        $answer->question_id = $question->id;
-        
-        $points = $score->quizzes;
-        $total = 0;
 }
 
 
@@ -104,14 +78,12 @@ public function quizSubmit()
                 {% if question.quiz_id == quiz.id %}
                 <div class="form-group">
                     {{ question.sentence | raw }}
-                    <select class="form-control">
-                    <option>Choose</option>
                     {% for answer in answers %}
                         {% if answer.question_id == question.id %}
-                            <option value="form_value('flag')">{{ answer.caption }}</option>
+                            <input type="radio" name="question-{{ question.id }}-answers" id="question-{{ question.id }}-answer-{{ answer.id }}" value="{{ answer.id }}">
+                            <label for="question-{{ question.id }}-answers">{{ answer.caption }}</label>
                         {% endif %}
                     {% endfor %}
-                    </select>
                 </div>
                 {% endif %}
             {% endfor %}

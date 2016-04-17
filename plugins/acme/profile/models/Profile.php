@@ -30,6 +30,10 @@ class Profile extends Model
             'user' => ['RainLab\User\Models\User']
     ];
     
+    public $hasOne = [
+            'score' => ['Gdp\Quiz\Models\Score']
+    ];
+    
     public static function getFromUser($user)
     {
         if ($user->profile)

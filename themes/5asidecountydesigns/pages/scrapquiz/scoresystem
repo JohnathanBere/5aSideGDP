@@ -1,0 +1,185 @@
+!! A POSSIBLE LOOP SUGGESTED BY CHRISTOS
+
+name="answers[<?=$questionId?>]" value="answerId"
+
+$_POST[answers[[1]]] = answerId
+
+
+
+
+foreach ($_POST['answers'] AS $qid => $selAnswerId)
+{
+
+
+
+
+}
+
+// What I wrote on a whim, such bad code wow.
+
+use Gdp\Quiz\Models\Score;
+use Gdp\Quiz\Models\Answer;
+
+public $points;
+
+public function score()
+{
+    if (!Auth::check()) {
+        return null;
+    }
+
+    return Auth::getUser()->profile->score;
+}
+
+public function quizSubmit()
+{
+    $points = 0;
+    $answers = Answer::all();
+    $score = Score::where('profile_id', Auth::getUser()->profile->id)->get();
+    if (Request::isMethod('post'))
+    {
+        foreach($answers as $answer)
+        {
+            $quizInput = Input::get('answer.id');
+            
+            if ($quizInput && $answer->flag == true)
+            {    
+                $points++;
+            }
+            
+            if(!$score == $this->score())
+            {
+                $score = new Score();
+                $score->profile_id = Auth::getUser()->profile()->id;
+                $score->total_score = $points;
+                return Redirect::to('profile');
+            }
+            
+            $points = 1;
+            $score->total_score = $points;
+            $score->save();
+            return Redirect::to('profile');
+        }
+    }
+}
+
+$profile = Profile::where('user_id', Auth::getUser()->id)->first();
+    $score = $profile->score();
+    $quiz = Quiz::get();
+    $question = $quiz->questions;
+    $answer = Answer::where('question_id', $question->id)->first();
+    
+    $profile = Profile::where('user_id', Auth::getUser()->id)->first();
+    $score = Score::where('profile_id', $profile->id)->first();
+    
+    if (!$score)
+    {
+        $score = new Score();
+        $score->profile_id = Auth::getUser()->profile()->id;
+        $score->save();
+    }
+    
+    
+    $this['questions'] = Question::all();
+    $this['answers'] = Answer::all();
+    
+    $score->total_score = $points;
+    $score->save();
+    return Redirect::to('profile');
+--------
+
+$score = Score::where('profile_id', Auth::user()->profile()->id)->first();
+    
+    if(!$score)
+    {
+        $score = new Score();
+        $score->profile_id = Auth::user()->profile()->id;
+        $score->save();
+    }
+    
+    // Now do a simple algorithm that adds a point for each answer of a question
+    // If the answer.flag is true!
+    
+    $quiz = Quiz::where('score_id', $score->id);
+    $question = Question::where('quiz_id', $quiz->id);
+    $answer = Answer::where('question_id', $question->id);
+    $flag = Request::input('flag');
+    
+    $quizzes = $score->quizzes;
+   
+    $counts = $answer->flag;
+    $total = $score->total_score;
+   
+   foreach($counts as $count)
+   {
+       if ($count == true)
+       {
+           DB::table('gdp_quiz_score')->increments('total_score', $count);
+       }
+   }
+   
+   /* $points = 0;
+    foreach ($_POST['{{ question.sentence }}-answers'] as $quizanswer)
+    {
+        $answer = Answer::get();
+        if ($answer.flag == true)
+        {
+            $points = $points + $quizanswer;
+        }
+    } */
+    
+    // $answer = $_POST['{{ question.sentence }}-answers'];
+    
+    /* foreach ($_POST['{{ question.sentence }}-answers'] as $quizanswer)
+    {
+        if(isset($points[$quizanswer]) && Answer::flag == true) {
+            $points[$quizanswer]++;
+        } else {
+            $points[$quizanswer] = 1;
+        }
+    }
+    
+    $score = max($points);
+    foreach($points as $type => $value) */
+    
+    $submissables = $_POST['questions-{{ question.id }}-answers'];
+    $answerInput = Request::input('answer.id');
+    
+    $answer = Answer::find($answerInput);
+    
+    $totalScore = 0;
+    
+    if ($submissable == $answerInput && $answer->flag == true)
+    {
+        $totalScore++;
+        $Scor
+    }
+    
+    $submitted = $_POST['questions-{{ question.id }}-answers'];
+    $answerInput = Request::input('answer.id');
+    $answer = Answer::find($answerInput);
+    
+    $points = 0;
+    
+    if ($submitted == $answer->id && $answer->flag == true)
+    {
+        $points++;
+    }
+    
+    
+    
+    
+    if (!$score = $this->score())
+    {
+        $score = new Score();
+        $score->profile_id = Auth::getUser()->profile()->id;
+        $score->total_score = $points;
+        return Redirect::to('profile');
+    }
+    
+    else
+    {
+        $score->fill(post());
+        $score->save();
+        return Redirect::to('profile');
+    }

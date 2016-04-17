@@ -33,6 +33,34 @@ background-color: #D4D4F0;
     background-color: #D4D4F0;
 
 }
+#ns-panel-heading {
+    border-color: #FFF !important;
+}
+#ns-panel-heading-2 {
+    border-color: #FFF !important;
+    margin-top: -22px;
+}
+#ns-panel-heading h2 {
+    color: #1EA28A;
+    padding-left: 19px;
+}
+#ns-panel-heading-2 h3 {
+    color: #1EA28A;
+    text-align: center;
+}
+#ns-penel-body {
+    height: 600px;
+    background-color: #ffffff;
+    padding-top: 2px;
+}
+#iframe-responsive {
+    height: 572px;
+    
+}
+
+
+
+
 
 #ns-well1 {
     width: 690px;
@@ -97,19 +125,26 @@ background-color: #D4D4F0;
 /* Medium devices(TABLET VERSION) (Screen sizes, less than 768px) */
 @media screen and (min-width: 480px) and (max-width: 769px)
 {
-    #ns-col-md-12-1 {
-        float: none;
-    }
-    #leaguePanel{
-        width: 90%;
-    }
+#ns-col-md-12-1 {
+    float: none;
+}
+#leaguePanel{
+    width: 95%;
+}
     
-    #ns-col-md-7 {
-     float: left;
- }
+#ns-col-md-7 {
+    float: left;
+}
  
- #ns-col-md-5 {
-     float: right;
-     width: 40%;
-     }
+#ns-col-md-5 {
+    float: right;
+    width: 45%;
+    padding: 0px;
+}
+#ns-penel-body {
+    padding-left: 0px;
+}
+#iframe-responsive {
+     width: 316px;
+    }
 }
