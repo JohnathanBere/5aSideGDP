@@ -1,0 +1,278 @@
+title = "Quiz example"
+url = "/js/quiz/:slug"
+layout = "default"
+is_hidden = 0
+
+[account]
+paramCode = "code"
+
+[session]
+security = "user"
+redirect = "/#promo-1"
+
+[builderDetails quizDetails]
+modelClass = "Gdp\Quiz\Models\Quiz"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+
+[builderList questionsList]
+modelClass = "Gdp\Quiz\Models\Question"
+scope = "-"
+displayColumn = "sentence"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList answersList]
+modelClass = "Gdp\Quiz\Models\Answer"
+scope = "-"
+displayColumn = "caption"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+use Gdp\Quiz\Models\Score;
+use Gdp\Quiz\Models\Quiz;
+use Acme\Profile\Models\Profile;
+use Gdp\Quiz\Models\Answer;
+use Gdp\Quiz\Models\Question;
+
+public $points;
+
+public function score()
+{
+    if (!Auth::check()) {
+        return null;
+    }
+
+    return Auth::getUser()->profile->score;
+}
+
+public function user()
+{
+    if (!Auth::check()) {
+        return null;
+    }
+
+    return Auth::getUser()->profile;
+}
+
+public function quizSubmit()
+{
+    $points = 0;
+    $choice = Request::input('answers_id');
+    $questions = Question::get();
+    $answers = Answer::get();
+    $questions = Question::get();
+    
+    /*
+    * TODO: Further modification, as only one point is added, if all selected answers amounts to true
+    * May make each input a unique one. Ask for control flow when it comes to quiz submissions.
+    * Use dot notation in Input::get(); and Request::input(); methods to imply source is an array.
+    */
+    
+    foreach($answers as $answer)
+    {
+        // If request is the same as the id of the answer chosen AND the flag is set to through
+        // we increment the points variable.
+        // How do we increment a point per question answered correctly?
+        if ($choice == $answer->id && $answer->flag == true)
+        {
+            $points++;
+        }
+    }
+    
+    /*
+    foreach($questions as $question)
+    {
+        if ($choice == $question->id)
+        {
+            foreach($answers as $answer)
+            {
+                if ($choice == $answer->id && $answer->flag == true)
+                {
+                    $points++;
+                }
+            }
+        }
+    }
+    */
+    
+    /*
+    foreach ($questions as $question)
+    {
+        if ($choice == $question->id)
+        {
+            foreach($answers as $answer)
+            {
+                if ($choice == $question->id && $answer->question_id == $question->id && $answer->flag == true)
+                {
+                    $points++;
+                }
+            }
+        }
+    }
+    */
+    
+    // This foreach loop can add points for each question answered correctly.
+    // All questions need to be answered correctly though :(
+    foreach($questions as $question)
+    /*
+    {
+         if ($choice == $question->id)
+         {
+            foreach($answers as $answer)
+            {
+                if ($answer->flag == true)
+                {
+                    $points++;
+                }
+            }
+        }
+    }
+    */
+    
+    /* foreach($answers as $answer)
+    {
+        if($choice == $answer->id && $answer->flag == true)
+        {
+            $points++;
+        }
+    } */
+    
+    // the total_score property of the Eloquent ORM-based $score object makes it possible
+    // to initialize the Score record of the current user, or create a new Score record for that user. 
+    // YES IT IS THAT POWERFUL.
+    // The total_score value will equal the new value of the $points variable. Effectively
+    // Adding an amount to the total_score attribute of a SPECIFIC profile's score table.
+    if(!$score = $this->score())
+    {
+        $profile = Auth::getUser()->profile;
+        
+        $score = new Score();
+        $score->total_score = $points;
+        $score->profile_id = $profile->id;
+        $score->save();
+        return Redirect::to('profile');
+    }
+    
+    elseif (!$user = $this->user()) 
+    {
+        // If the user has no profile, a record is added.
+        $user = Auth::getUser()->profile();
+        $user->create([
+            'username' => 'Edit Profile!'
+        ]);
+
+         return Redirect::to('/user/profile/edit/');
+    }
+    
+    
+    else 
+    {
+        $score = Auth::getUser()->profile->score;
+        $score->increment('total_score', $points);
+        
+        $score->save();
+        return Redirect::to('profile');
+    }
+}
+==
+{% set quiz = quizDetails.record %}
+{% set displayColumn = quizDetails.displayColumn %}
+{% set notFoundMessage = quizDetails.notFoundMessage %}
+
+{% set questions = questionsList.records %}
+{% set questionsDisplayColumn = questionsList.displayColumn %}
+{% set noQuestionsMessage = questionsList.noRecordsMessage %}
+{% set questionsPage = questions.detailsPage %}
+{% set questionsKeyColumn = questionsList.detailsKeyColumn %}
+{% set questionsUrlParameter = questionsList.detailsUrlParameter %}
+
+{% set answers = answersList.records %}
+{% set answersDisplayColumn = answersList.displayColumn %}
+{% set noAnswersMessage = answersList.noRecordsMessage %}
+{% set answersDetailsPage = answersList.detailsPage %}
+{% set answersDetailsKeyColumn = answersList.detailsKeyColumn %}
+{% set andswersDetailsUrlParameter = answersList.detailsUrlParameter %}
+
+<style>
+div#test{ border:#000 1px solid; padding:10px 40px 40px 40px; }
+</style>
+<script>
+var pos = 0, test, test_status, question, choice, choices, chA, chB, chC, correct = 0;
+/* var questions = [
+    [ "What is 10 + 4?", "12", "14", "16", "B" ],
+	[ "What is 20 - 9?", "7", "13", "11", "C" ],
+	[ "What is 7 x 3?", "21", "24", "25", "A" ],
+	[ "What is 8 / 2?", "10", "2", "4", "C" ]
+]; */
+
+var questions = [
+{% for question in questions %}
+    {% set quiz = quizDetails.record %}
+    {% if question.quiz_id == quiz.id %}
+    ["{{ question.sentence | raw }}",
+        {% for answer in answers %}
+            {% if answer.question_id == question.id %}
+                "{{ answer.caption }}",
+            {% endif %}
+        {% endfor %}
+        ],
+    {% endif %}
+{% endfor %}
+];
+function _(x){
+	return document.getElementById(x);
+}
+function renderQuestion(){
+	test = _("test");
+	if(pos >= questions.length){
+		test.innerHTML = "<h2>You got "+correct+" of "+questions.length+" questions correct</h2>";
+		_("test_status").innerHTML = "Test Completed";
+		pos = 0;
+		correct = 0;
+		return false;
+	}
+	_("test_status").innerHTML = "Question "+(pos+1)+" of "+questions.length;
+	question = questions[pos][0];
+	chA = questions[pos][1];
+	chB = questions[pos][2];
+	chC = questions[pos][3];
+	chD = questions[pos][4];
+	test.innerHTML = "<h3>"+question+"</h3>";
+	test.innerHTML += "<input type='radio' name='choices' value='A'> "+chA+"<br>";
+	test.innerHTML += "<input type='radio' name='choices' value='B'> "+chB+"<br>";
+	test.innerHTML += "<input type='radio' name='choices' value='C'> "+chC+"<br>";
+	test.innerHTML += "<input type='radio' name='choices' value='D'> "+chD+"<br><br>";
+	test.innerHTML += "<button onclick='checkAnswer()'>Submit Answer</button>";
+}
+function checkAnswer(){
+	choices = document.getElementsByName("choices");
+	for(var i=0; i<choices.length; i++){
+		if(choices[i].checked){
+			choice = choices[i].value;
+		}
+	}
+	if(choice == questions[pos][5]){
+		correct++;
+	}
+	pos++;
+	renderQuestion();
+}
+window.addEventListener("load", renderQuestion, false);
+</script>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+        {{ form_open({request: 'quizSubmit'}, { model: user.profile.score }, {'enc-type': 'multipart/form-data'}) }}
+                <h2 id="test_status"></h2>
+                <div id="test"></div>
+        {{ form_close() }}
+        </div>
+    </div>
+</div>

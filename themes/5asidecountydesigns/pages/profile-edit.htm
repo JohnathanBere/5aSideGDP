@@ -110,12 +110,13 @@ public function onChange()
             
             
             {{ form_close() }}
-        <div> <!-- /md-7 -->
-    </div>
-</div>
-<div class="col-md-5">
+        </div> <!-- /md-7 -->
+        
+        <div class="col-md-5">
             <label>Change profile pic</label>
             {{ form_open() }}
                 {% component 'imageUploader' %}
             {{ form_close() }}
+        </div>
+    </div>
 </div>

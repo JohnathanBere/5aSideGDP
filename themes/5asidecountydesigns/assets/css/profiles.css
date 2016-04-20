@@ -9,7 +9,6 @@
     padding: 0;
 }
 #pc-jumbotron {
-    padding-right: 47;
     color: #000000;
     background-image: url('/themes/5asidecountydesigns/assets/images/16533.jpg'); 
     background-repeat: no-repeat; 
@@ -40,50 +39,23 @@
 
 
 /* Smaller devices(MOBILE VERSION) (Screen sizes, less than 768px) */
-@media screen and (max-width: 479px)
+@media screen and (min-width: 0px) and (max-width: 479px)
+
 {
-    
-
-
-   /*--------------------
-    |                     |
-    |     PROFILE PAGE    |
-    |                     |
-     ---------------------*/
-     
-#pc-container {
-     padding-left: 0px;
-     padding-right: 0px;
-    
+    #pc-col-md-12 {
+    padding: 0;
 }
-#pc-container-inner {
+
+    #pc-container-inner {
+    padding: 0px;
     margin-left: 0px;
-    padding: 0px;
-}
-
-#pc-jumbotron {
-    padding: 0px;
-    margin-top: 0px;
-}
-#col-md-2-inner  {
-    margin-top: 5px;
-    width: 100%;
-}
-
-#col-md-2-inner img {
-   border-radius: 12px;
-    
-}
-
-
-#pc-col-md-8 {
-    padding: 5px;
-}
-    
-#pc-well {
-    padding: 10px;
-}
-    
+    }
+    #pc-col-md-8 {
+        padding: 0px;
+    }
+    #pc-well {
+        padding: 10px;
+    }
 #pf-img-btn .btn.btn-default {
     width: 303px;
     }
@@ -95,6 +67,18 @@
 /* Medium devices(TABLET VERSION) (Screen sizes, less than 768px) */
 @media screen and (min-width: 480px) and (max-width: 769px)
 {
-    
-    
+    #pc-container-inner {
+    margin-left: -70px;
+    width: 125%;
+}
+    .jumbotron .container {
+    max-width: none;
+}
+    #col-md-2-inner {
+    display: none;
+}
+    #pc-col-md-8 {
+    width: 85%;
+    margin-left: 45px;
+    }
 }

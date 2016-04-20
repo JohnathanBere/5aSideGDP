@@ -15,16 +15,17 @@ redirect = "/#promo-1"
 
 <div class="container" id="pc-container">
     <div class="col-md-12" id="pc-col-md-12">
-        <div class="jumbotron" id="pc-jumbotron" style="background-image:url('{{ 'assets/images/16533.jpg' | theme }}')">
-            
+        <div class="jumbotron" id="pc-jumbotron" style="background-image:url('{{ 'assets/images/16533.jpg' | theme }}')"/>
             <div class="container" id="pc-container-inner">
-                <!-- <div class=""> -->
+                {% if user.avatar.path %}
                     <div class="col-md-2" id="col-md-2-inner">
                         <img class="img-responsive" src="{{ user.avatar.path }}"/>
-                    </div>
-                    <div class="col-md-8">
-                            <div class="well" id="pc-well">
-                            <h1>{{ user.profile.username}}</h1>
+                    </div> <!-- End col-md-2-inner -->
+                {% endif %}
+                <div class="col-md-8" id="pc-col-md-8">
+                    <div class="well" id="pc-well">
+                        <h1>{{ user.profile.username}}</h1>
+                        <div class="table-responsive table-condensed">
                             <table class="table">
                                 <tr>
                                     <td>Favourite Team</td>
@@ -39,14 +40,23 @@ redirect = "/#promo-1"
                                     <td>{{ user.profile.fan_type }}</td>
                                 </tr>
                             </table>
-                            <p>
-                                {{ user.profile.bio }}
-                            </p>
-                            <p> Total Score {{ user.profile.score.total_score }}</p>
-                        </div>
-                    <!-- </div> -->  
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                        </div> <!-- End Responsive Table -->
+                        <p>
+                            {{ user.profile.bio }}
+                        </p>
+                        <div class="table-responsive table-condensed">
+                            <table class="table">
+                                <tr>
+                                    <td>Total Score</td>
+                                </tr>
+                                <tr>
+                                    <td>{{ user.profile.score.total_score }}</td>
+                                </tr>
+                            </table>
+                        </div> <!-- End Responsive Table -->
+                    </div> <!-- End pc-well -->
+                </div> <!-- End pc-col-md-8 -->
+            </div> <!-- End pc-container-inner -->
+        </div> <!-- End pc-jumbotron -->
+    </div> <!-- End pc-col-md-12 -->
+</div> <!-- End pc-container -->

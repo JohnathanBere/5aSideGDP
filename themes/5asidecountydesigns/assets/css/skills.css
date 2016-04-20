@@ -29,7 +29,8 @@
     background-image: url('/themes/5asidecountydesigns/assets/images/brazil.jpg'); 
     background-repeat: no-repeat; 
     background-size: cover; 
-    background-position-y: 0%;
+    background-position: 100% 0%;
+    -webkit-background-position: 100% 0%;
     
 }
 #sk-panel-title2 a {
@@ -37,7 +38,8 @@
     background-image: url('/themes/5asidecountydesigns/assets/images/brazil.jpg'); 
     background-repeat: no-repeat;
     background-size: cover;
-    background-position-y: 26%;
+    background-position: 100% 26%;
+    -webkit-background-position: 100% 26%;
 }
 
 #sk-panel-title3 a {
@@ -48,7 +50,8 @@
     background-image: url('/themes/5asidecountydesigns/assets/images/brazil.jpg'); 
     background-repeat: no-repeat;
     background-size: cover;
-    background-position-y: 52%;
+    background-position: 100% 52%;
+    -webkit-background-position: 100% 52%;
     
 }
 #sk-panel-title4 a {
@@ -59,7 +62,8 @@
     background-image: url('/themes/5asidecountydesigns/assets/images/brazil.jpg'); 
      background-repeat: no-repeat;
     background-size: cover;
-    background-position-y: 78%;
+    background-position: 100% 78%;
+    -webkit-background-position: 100% 78%;
     
 }
 #sk-panel-title5 a {
@@ -70,7 +74,8 @@
     background-image: url('/themes/5asidecountydesigns/assets/images/brazil.jpg'); 
      background-repeat: no-repeat;
     background-size: cover;
-    background-position-y: 100%;
+    background-position: 100% 100%;
+    -webkit-background-position: 100% 100%;
     
 }
 
@@ -85,12 +90,58 @@
 /* Smaller devices(MOBILE VERSION) (Screen sizes, less than 768px) */
 @media screen and (max-width: 479px)
 {
+    #sk-panel-title a {     
+    background-image: url('/themes/5asidecountydesigns/assets/images/stadium1.jpg'); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% 52%;
+    -webkit-background-position: 100% 52%;
+    
+}
+     #sk-panel-title2 a {     
+    background-image: url('/themes/5asidecountydesigns/assets/images/stadium.jpg'); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% 53%;
+    -webkit-background-position: 100% 52%;
+}
+    #sk-panel-title3 a {     
+    background-image: url('/themes/5asidecountydesigns/assets/images/united.JPG'); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% 45%;
+    -webkit-background-position: 100% 52%;
+}
+    #sk-panel-title4 a {     
+    background-image: url('/themes/5asidecountydesigns/assets/images/allianz.jpg'); 
+     background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% 78%;
+    -webkit-background-position: 100% 78%;
+}
+    #sk-panel-title5 a {     
+    background-image: url('/themes/5asidecountydesigns/assets/images/brazil.jpg'); 
+     background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% 100%;
+    -webkit-background-position: 100% 100%;
+    
+}
     
 }
 
 /* Medium devices(TABLET VERSION) (Screen sizes, less than 768px) */
-@media screen and (min-width: 480px) and (max-width: 769px)
+@media screen and (min-width: 480px) and (max-width: 767px)
 {
     
     
+}
+
+/* Larger devices... */
+@media screen and (min-width: 768px)
+{
+    .col5-first
+    {
+        margin-left: 45px;   
+    }    
 }

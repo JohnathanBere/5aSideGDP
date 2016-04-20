@@ -36,17 +36,83 @@ detailsUrlParameter = "id"
 pageNumber = "{{ :page }}"
 
 ==
-use Acme\Profile\Models\Profile;
-use Gdp\Quiz\Models\Quiz;
 use Gdp\Quiz\Models\Score;
+use Gdp\Quiz\Models\Quiz;
+use Acme\Profile\Models\Profile;
 use Gdp\Quiz\Models\Answer;
 use Gdp\Quiz\Models\Question;
 
 public $points;
 
-    public function quizSubmit()
+public function score()
 {
+    if (!Auth::check()) {
+        return null;
+    }
+
+    return Auth::getUser()->profile->score;
+}
+
+public function user()
+{
+    if (!Auth::check()) {
+        return null;
+    }
+
+    return Auth::getUser()->profile;
+}
+
+public function quizSubmit()
+{
+    $points = 0;
+    $choice = Request::input('question-{{ question.id }}-answers');
+    $questions = Question::get();
+    $answers = Answer::get();
     
+    /*
+    * TODO: Further modification, as only one point is added, if all selected answers amounts to true
+    * May make each input a unique one. Ask for control flow when it comes to quiz submissions.
+    *
+    */
+    foreach($answers as $answer)
+    {
+        if ($choice == $answer->id && $answer->flag == true)
+        {
+            $points++;
+        }
+    }
+    
+    if(!$score = $this->score())
+    {
+        $profile = Auth::getUser()->profile;
+        
+        $score = new Score();
+        $score->total_score = $points;
+        $score->profile_id = $profile->id;
+        $score->save();
+        return Redirect::to('profile');
+    }
+    
+    elseif (!$user = $this->user()) 
+    {
+        // If the user has no profile, a record is added.
+        $user = Auth::getUser()->profile();
+        $user->create([
+            'username' => 'Edit Profile!'
+        ]);
+
+         return Redirect::to('/user/profile/edit/');
+    }
+    
+    
+    else 
+    {
+        $score = Auth::getUser()->profile->score;
+        $score->increment('total_score', $points);
+        
+        $score->save();
+        return Redirect::to('profile');
+    }
 }
 
 

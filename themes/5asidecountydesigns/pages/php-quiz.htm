@@ -39,6 +39,7 @@ use Gdp\Quiz\Models\Score;
 use Gdp\Quiz\Models\Quiz;
 use Acme\Profile\Models\Profile;
 use Gdp\Quiz\Models\Answer;
+use Gdp\Quiz\Models\Question;
 
 public $points;
 
@@ -63,28 +64,69 @@ public function user()
 public function quizSubmit()
 {
     $points = 0;
-    $choice = Request::input('answer_id');
+    $posPoints = 0;
+    $negPoints = 0;
+    $count = 0;
+    // $choice = Request::input('answers_id');
+    $questions = Question::get();
     $answers = Answer::get();
+    $quizzes = Quiz::get();
     
     /*
     * TODO: Further modification, as only one point is added, if all selected answers amounts to true
     * May make each input a unique one. Ask for control flow when it comes to quiz submissions.
-    *
+    * Use dot notation in Input::get(); and Request::input(); methods to imply source is an array.
     */
+    
+    foreach($quizzes as $quiz)
+    {
+        if($quiz->id)
+        {
+            foreach($questions as $question)
+            {
+                if($question->id && $question->quiz_id == $quiz->id)
+                {
+                    foreach($answers as $answer)
+                    {
+                        $choice = Request::input('answers_id');
+                        if($choice == $answer->id && $answer->flag == true && $answer->question_id == $question->id)
+                        {
+                            $points++;
+                        }
+                    }
+                    $count++;
+                }
+            }
+        }
+    }
+    $totalScore = $count * $points;
+    
+    /*
     foreach($answers as $answer)
     {
+        // If request is the same as the id of the answer chosen AND the flag is set to through
+        // we increment the points variable.
+        // How do we increment a point per question answered correctly?
         if ($choice == $answer->id && $answer->flag == true)
         {
             $points++;
         }
     }
+    */
     
+   
+    
+    // the total_score property of the Eloquent ORM-based $score object makes it possible
+    // to initialize the Score record of the current user, or create a new Score record for that user. 
+    // YES IT IS THAT POWERFUL.
+    // The total_score value will equal the new value of the $points variable. Effectively
+    // Adding an amount to the total_score attribute of a SPECIFIC profile's score table.
     if(!$score = $this->score())
     {
         $profile = Auth::getUser()->profile;
         
         $score = new Score();
-        $score->total_score = $points;
+        $score->total_score = $totalScore;
         $score->profile_id = $profile->id;
         $score->save();
         return Redirect::to('profile');
@@ -105,7 +147,7 @@ public function quizSubmit()
     else 
     {
         $score = Auth::getUser()->profile->score;
-        $score->increment('total_score', $points);
+        $score->increment('total_score', $totalScore);
         
         $score->save();
         return Redirect::to('profile');
@@ -139,13 +181,13 @@ public function quizSubmit()
                 {% if question.quiz_id == quiz.id %}
                 <div class="form-group">
                     {{ question.sentence | raw }}
-                    <select name="answer_id" class="form-control">
-                    <option>Choose!</option>
-                    {% for answer in answers %}
-                        {% if answer.question_id == question.id %}
-                            <option value="{{ answer.id }}">{{ answer.caption }}</option>
-                        {% endif %}
-                    {% endfor %}
+                    <select name="answers_id" class="form-control">
+                        <option>Choose!</option>
+                        {% for answer in answers %}
+                            {% if answer.question_id == question.id %}
+                                <option value="{{ answer.id }}">{{ answer.caption }}</option>
+                            {% endif %}
+                        {% endfor %}
                     </select>
                 </div>
                 {% endif %}

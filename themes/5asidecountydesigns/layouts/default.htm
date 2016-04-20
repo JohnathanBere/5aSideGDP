@@ -34,7 +34,7 @@ security = "all"
             'assets/css/skills.css',
             'assets/css/landing.css',
             'assets/css/tactics.css',
-            'assets/css/index.css'
+            'assets/css/layouts.css'
         ]|theme }}" rel="stylesheet">
         <!-- ^^^ we should keep the original one because of the universal stuff like the nav bar -->
         
@@ -80,14 +80,12 @@ security = "all"
                             <ul class="dropdown-menu">
                             {% if user %}
                                 <li><a href="{{ 'articles'|page }}">Articles</a></li>
-                            {% endif %}
-                                <li role="separator" class="divider"></li>
                                 <li><a href="{{ 'skills'|page }}">Skills</a></li>
-                                <li role="separator" class="divider"></li>
+                            {% endif %}
                                 <li><a href="{{ 'tactics'|page }}">Tactics</a></li>
                              </ul>
                             </li>
-                            <li class="{% if this.page.id == 'news' %}active{% endif %}"><a href="{{ 'news-2'|page }}">News</a></li>
+                            <li class="{% if this.page.id == 'news-2' %}active{% endif %}"><a href="{{ 'news-2'|page }}">News</a></li>
                             {% component 'session' %}
                             {% if user %}
                                 <li><a href="#" data-request="onLogout" data-request-data="redirect: '/'">Logout</a></li>

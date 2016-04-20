@@ -1,0 +1,149 @@
+/* Layouts */
+.navbar-brand 
+{
+    padding: 0px;
+}
+
+#sitelogo
+{
+    font-size: 34px;
+    padding-top: 30px;
+    position: absolute;
+}
+
+#sitelogo > img
+{
+    height: 72px;
+    position: relative;
+    float: left;
+    top: -26px;
+}
+
+#header-1 .main-nav .navbar-nav > li.active a
+{
+    color: #ffffff;
+    background: none;
+    font-weight: 100;
+    
+}
+#header-1 .main-nav .navbar-nav > li a:hover
+{
+    color: #ffffff;
+    background: #8e0000;
+}
+
+#header-1 .main-nav .navbar-nav > li a 
+{
+	border-right: 1px solid white;
+}
+#header-1 .main-nav .nav 
+{
+    margin-top: 12px;
+    margin-right: 1px;
+}
+
+/*	HEADER 1 MEDIA QUERIES
+/*----------------------------------------------------*/ 
+
+/* Smaller devices(MOBILE VERSION) (Screen sizes, less than 768px) */
+@media screen and (min-width: 0px) and (max-width: 479px)
+{
+    #sitelogo {
+        font-size: 26px;
+        padding-top: 1em;
+        position: absolute;
+        text-align: center;
+        margin-left: 40px;
+    }
+    
+    #sitelogo > img {
+        display: none;
+    }
+    #header-1 .main-nav .navbar-nav > li a 
+    {
+	    border-bottom: 1px solid white;
+    }
+    #header-1 .main-nav .navbar-nav > li a 
+    {
+        border-right: none;
+    }
+    #header-1 .navbar-collapse {
+       background-color: #C52000;
+    }
+    .dropdown-menu .divider {
+        margin: 0px;
+       background-color: transparent;
+    }
+}
+
+
+
+/*	HEADER 1 MEDIA QUERIES
+/*----------------------------------------------------*/
+
+/* Medium devices(TABLET VERSION) (Screen sizes, less than 768px) */
+@media screen and (min-width: 480px) and (max-width: 769px)                                   
+{
+    
+    #header-1 .navbar-collapse 
+    {
+        background-color: #AC1C00;
+    }  
+ 
+    #sitelogo {
+    font-size: 28px;
+    }
+    #header-1 .main-nav .nav {
+    margin-top: 17px;
+    }
+ 
+
+    
+}
+
+
+
+#header-1 .main-nav .nav .dropdown-menu 
+{
+    opacity: 0.9;
+    background: #8E0000;
+    border-right: none;
+}
+#header-1 .main-nav .nav .dropdown-menu > li a 
+{
+    border-right: none;
+}
+#header-1 .main-nav .nav .dropdown-menu:before 
+{
+    border-bottom: 10px solid #8E0000;
+    opacity: 0.9;
+}
+
+#header-1 .main-nav .nav-header .nav-toggle 
+{
+    opacity: 0.9;
+    background: #8E0000;
+    border-right: none;
+}
+#header-1 .main-nav .nav .dropdown-menu > li a:hover
+{
+    background: #5A0000;
+}
+
+
+/* MEDIA QUERY FOR EXTREMELY SMALL SCREENS */
+@media(max-width: 359px)
+{
+   #sitelogo 
+   {
+        /* visibility: hidden; */
+        font-size: 21px;
+        padding-left: 35px;
+        padding-top: 28px;
+    }
+    #sitelogo > img 
+    {
+        /*visibility: initial; */
+        display: none;
+    }
+} 
