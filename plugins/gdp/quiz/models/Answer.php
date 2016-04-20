@@ -25,7 +25,7 @@ class Answer extends Model
      * @var string The database table used by the model.
      */
     public $table = 'gdp_quiz_answer';
-    protected $fillable = ['caption, question_id'];
+    protected $fillable = ['caption, question_id, flag'];
     
     public $belongsTo = [
             'question' => ['Gdp\Quiz\Models\Question']

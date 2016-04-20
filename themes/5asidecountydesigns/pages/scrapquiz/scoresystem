@@ -1,3 +1,11 @@
+if($answer->question_id == $question->id)
+{
+    if($choice == $answer->id && $answer->flag == 1)
+    {
+        $points++;
+    }
+}
+
 !! A POSSIBLE LOOP SUGGESTED BY CHRISTOS
 
 name="answers[<?=$questionId?>]" value="answerId"
