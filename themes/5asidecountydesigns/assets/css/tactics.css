@@ -14,6 +14,10 @@
     color: #16a085;
     background-color: #D4D4F0;
 }
+.tc-row {
+    margin-right: 45px;
+    margin-left: 45px;
+}
 .tc-well img {
     height: 335px;
     float: left;

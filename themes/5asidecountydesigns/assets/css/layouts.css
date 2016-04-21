@@ -22,8 +22,8 @@
 #header-1 .main-nav .navbar-nav > li.active a
 {
     color: #ffffff;
-    background: none;
-    font-weight: 100;
+    background-color: none;
+    font-weight: 1000;
     
 }
 #header-1 .main-nav .navbar-nav > li a:hover

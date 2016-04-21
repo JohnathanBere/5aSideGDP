@@ -20,13 +20,18 @@ postPage = "tactics"
             <h1>Tactics</h1>
         </div>   
     </div>
-    <!-- <div class="row">
-        <div class="col-md-12"> -->
+    <div class="row tc-row">
+        <div class="well well-sm"> 
+  <p>The images below show a situation. This is an exercise in situational thinking. The Black circle dots 
+  represent the attacking team whilst the yellow circle dots represent the defending team. On the right hand 
+  side of the images there are buttons which can be found. Each button represents a player (Black Dot) that
+  can be found on the image of that section, when you press a button a pop up will apear giving you some 
+  advice on why you should or shouldn't pass the ball to the collerating player. 
+		</p></div>
+</div>
             {% for post in posts %}
               <div class="container">
                   <div class="content">{{ post.content_html|raw }}</div>
               </div>
             {% endfor %}
-        <!-- </div>
-   </div> -->
 </div>

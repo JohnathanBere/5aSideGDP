@@ -1,0 +1,160 @@
+title = "Quiz"
+url = "quiz/post/:slug"
+layout = "default"
+is_hidden = 0
+
+[builderDetails quizDetails]
+modelClass = "Gdp\Quiz\Models\Quiz"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+
+[account]
+paramCode = "code"
+
+[session]
+security = "user"
+redirect = "/#promo-1"
+
+[builderList questionsList]
+modelClass = "Gdp\Quiz\Models\Question"
+scope = "-"
+displayColumn = "sentence"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList answersList]
+modelClass = "Gdp\Quiz\Models\Answer"
+scope = "-"
+displayColumn = "caption"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+==
+use Gdp\Quiz\Models\Score;
+use Gdp\Quiz\Models\Quiz;
+use Acme\Profile\Models\Profile;
+use Gdp\Quiz\Models\Answer;
+use Gdp\Quiz\Models\Question;
+
+public $points;
+
+public function score()
+{
+    if (!Auth::check()) {
+        return null;
+    }
+
+    return Auth::getUser()->profile->score;
+}
+
+public function user()
+{
+    if (!Auth::check()) {
+        return null;
+    }
+
+    return Auth::getUser()->profile;
+}
+
+public function quizSubmit()
+{
+    $points = 0;
+    $choice = Request::input('question-{{ question.id }}-answers');
+    $questions = Question::get();
+    $answers = Answer::get();
+    
+    /*
+    * TODO: Further modification, as only one point is added, if all selected answers amounts to true
+    * May make each input a unique one. Ask for control flow when it comes to quiz submissions.
+    *
+    */
+    foreach($answers as $answer)
+    {
+        if ($choice == $answer->id && $answer->flag == true)
+        {
+            $points++;
+        }
+    }
+    
+    if(!$score = $this->score())
+    {
+        $profile = Auth::getUser()->profile;
+        
+        $score = new Score();
+        $score->total_score = $points;
+        $score->profile_id = $profile->id;
+        $score->save();
+        return Redirect::to('profile');
+    }
+    
+    elseif (!$user = $this->user()) 
+    {
+        // If the user has no profile, a record is added.
+        $user = Auth::getUser()->profile();
+        $user->create([
+            'username' => 'Edit Profile!'
+        ]);
+
+         return Redirect::to('/user/profile/edit/');
+    }
+    
+    
+    else 
+    {
+        $score = Auth::getUser()->profile->score;
+        $score->increment('total_score', $points);
+        
+        $score->save();
+        return Redirect::to('profile');
+    }
+}
+
+
+==
+{% set quiz = quizDetails.record %}
+{% set displayColumn = quizDetails.displayColumn %}
+{% set notFoundMessage = quizDetails.notFoundMessage %}
+
+{% set questions = questionsList.records %}
+{% set questionsDisplayColumn = questionsList.displayColumn %}
+{% set noQuestionsMessage = questionsList.noRecordsMessage %}
+{% set questionsPage = questions.detailsPage %}
+{% set questionsKeyColumn = questionsList.detailsKeyColumn %}
+{% set questionsUrlParameter = questionsList.detailsUrlParameter %}
+
+{% set answers = answersList.records %}
+{% set answersDisplayColumn = answersList.displayColumn %}
+{% set noAnswersMessage = answersList.noRecordsMessage %}
+{% set answersDetailsPage = answersList.detailsPage %}
+{% set answersDetailsKeyColumn = answersList.detailsKeyColumn %}
+{% set andswersDetailsUrlParameter = answersList.detailsUrlParameter %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+        {{ form_ajax({request: 'quizSubmit'}, { model: user.profile.score }, {'enc-type': 'multipart/form-data'}) }}
+            {% for question in questions %}
+                {% set quiz = quizDetails.record %}
+                {% if question.quiz_id == quiz.id %}
+                <div class="form-group">
+                    {{ question.sentence | raw }}
+                    {% for answer in answers %}
+                        {% if answer.question_id == question.id %}
+                            <input type="radio" name="question-{{ question.id }}-answers" id="question-{{ question.id }}-answer-{{ answer.id }}" value="{{ answer.id }}">
+                            <label for="question-{{ question.id }}-answers">{{ answer.caption }}</label>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            {% endfor %}
+            <button type="submit" class="btn btn-success">Submit</h1>
+        {{ form_close() }}
+        </div>
+    </div>
+</div>

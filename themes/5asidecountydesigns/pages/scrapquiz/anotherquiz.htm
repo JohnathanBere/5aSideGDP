@@ -1,0 +1,122 @@
+title = "Quiz"
+url = "/showquiz/:slug"
+layout = "default"
+is_hidden = 0
+
+[builderDetails quizDetails]
+modelClass = "Gdp\Quiz\Models\Quiz"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+
+[account]
+paramCode = "code"
+
+[session]
+security = "user"
+redirect = "/#promo-1"
+
+[builderList questionsList]
+modelClass = "Gdp\Quiz\Models\Question"
+scope = "-"
+displayColumn = "sentence"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList answersList]
+modelClass = "Gdp\Quiz\Models\Answer"
+scope = "-"
+displayColumn = "caption"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+==
+use Acme\Profile\Models\Profile;
+use Gdp\Quiz\Models\Quiz;
+use Gdp\Quiz\Models\Score;
+use Gdp\Quiz\Models\Answer;
+
+public $points;
+
+public function profile()
+{
+    if (!Auth::check()) {
+        return null;
+    }
+
+    return Auth::getUser()->profile;
+}
+
+public function quizSubmit()
+{
+    $score = Score::where('profile_id', Auth::user()->profile->id)->first();
+    
+    $points = Request::input('flag');
+    
+        if(!$score = $this->profile()->score()) {
+            $score = new Score();
+            $score->profile_id = Auth::user()->profile()->id;
+            $score->save();
+        }
+        
+        $quiz = Quiz::get();
+        $quiz->score_id = $score->id;
+        $question = Question::get();
+        $question->quiz_id = $quiz->id;
+        $answer = Answer::get();
+        $answer->question_id = $question->id;
+        
+        $points = $score->quizzes;
+        $total = 0;
+}
+
+
+==
+{% set quiz = quizDetails.record %}
+{% set displayColumn = quizDetails.displayColumn %}
+{% set notFoundMessage = quizDetails.notFoundMessage %}
+
+{% set questions = questionsList.records %}
+{% set questionsDisplayColumn = questionsList.displayColumn %}
+{% set noQuestionsMessage = questionsList.noRecordsMessage %}
+{% set questionsPage = questions.detailsPage %}
+{% set questionsKeyColumn = questionsList.detailsKeyColumn %}
+{% set questionsUrlParameter = questionsList.detailsUrlParameter %}
+
+{% set answers = answersList.records %}
+{% set answersDisplayColumn = answersList.displayColumn %}
+{% set noAnswersMessage = answersList.noRecordsMessage %}
+{% set answersDetailsPage = answersList.detailsPage %}
+{% set answersDetailsKeyColumn = answersList.detailsKeyColumn %}
+{% set andswersDetailsUrlParameter = answersList.detailsUrlParameter %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+        {{ form_ajax({request: 'quizSubmit'}, { model: user.profile.score }, {'enc-type': 'multipart/form-data'}) }}
+            {% for question in questions %}
+                {% set quiz = quizDetails.record %}
+                {% if question.quiz_id == quiz.id %}
+                <div class="form-group">
+                    {{ question.sentence | raw }}
+                    <select class="form-control">
+                    <option>Choose</option>
+                    {% for answer in answers %}
+                        {% if answer.question_id == question.id %}
+                            <option value="form_value('flag')">{{ answer.caption }}</option>
+                        {% endif %}
+                    {% endfor %}
+                    </select>
+                </div>
+                {% endif %}
+            {% endfor %}
+            <button type="submit" class="btn btn-success">Submit</h1>
+        {{ form_close() }}
+        </div>
+    </div>
+</div>
