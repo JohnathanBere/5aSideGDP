@@ -40,12 +40,13 @@
 
 /* Smaller devices(MOBILE VERSION) (Screen sizes, less than 768px) */
 @media screen and (min-width: 0px) and (max-width: 479px)
-
 {
     #pc-col-md-12 {
     padding: 0;
+    }
+    #col-md-2-inner {
+    width: 100%;
 }
-
     #pc-container-inner {
     padding: 0px;
     margin-left: 0px;

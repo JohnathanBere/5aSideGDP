@@ -43,7 +43,7 @@
     margin-left: 14px;
 }
 
-#at-paraBtn {
+.at-paraBtn {
     padding-left: 30px;
 }
 
@@ -87,10 +87,10 @@
         width: 33%;    
     }
     
-    #at-paraBtn {
+    .at-paraBtn {
     padding-left: 0px;
     }
-    #at-paraBtn .btn {
+    .at-paraBtn .btn {
         margin: 0;    
     }
 }

@@ -41,16 +41,8 @@ use Acme\Profile\Models\Profile;
 use Gdp\Quiz\Models\Answer;
 use Gdp\Quiz\Models\Question;
 
+public $username;
 public $points;
-
-public function score()
-{
-    if (!Auth::check()) {
-        return null;
-    }
-
-    return Auth::getUser()->profile->score;
-}
 
 public function user()
 {
@@ -61,21 +53,40 @@ public function user()
     return Auth::getUser()->profile;
 }
 
+public function score()
+{
+    if (!Auth::check()) {
+        return null;
+    }
+
+    try
+    {
+        return Auth::getUser()->profile->score;
+    }
+    
+    catch(Exception $ex)
+    {
+        return Redirect::to('user/profile/edit');
+    }
+}
+
+
+
 public function quizSubmit()
 {
+    if (!$user = $this->user()) 
+    {
+        // If the user has no profile, a record is added.
+        $user = Auth::getUser()->profile();
+        $user->create([
+            'username' => 'Edit Profile!'
+        ]);
+    }
+    
     $points = 0;
-    $count = 0;
-    //$choice = Request::input('answers_id');
-    // $choice = $_POST['question-{{ question.id }}-answers'];
     $questions = Question::get();
     $answers = Answer::get();
     $quizzes = Quiz::get();
-    
-    /*
-    * TODO: Further modification, as only one point is added, if all selected answers amounts to true
-    * May make each input a unique one. Ask for control flow when it comes to quiz submissions.
-    * Use dot notation in Input::get(); and Request::input(); methods to imply source is an array.
-    */
     
     foreach($quizzes as $quiz)
     {
@@ -85,8 +96,6 @@ public function quizSubmit()
             {
                 if($question->id && $question->quiz_id == $quiz->id)
                 {
-                    // $choice = $_POST['question-' . $question->id . '-answers'];
-                    // identifier, you need unique identifiers for the questions in the array! ^ Above is this variable!
                     foreach($answers as $answer)
                     {
                         
@@ -104,12 +113,10 @@ public function quizSubmit()
                             return Redirect::to('quiz/' . $slug);
                         }
                     }
-                    //$count++;
                 }
             }
         }
     }
-    // $totalScore = $count * $points;
     $totalScore = $points;
 
     
@@ -129,25 +136,22 @@ public function quizSubmit()
         return Redirect::to('profile');
     }
     
-    elseif (!$user = $this->user()) 
-    {
-        // If the user has no profile, a record is added.
-        $user = Auth::getUser()->profile();
-        $user->create([
-            'username' => 'Edit Profile!'
-        ]);
-
-         return Redirect::to('/user/profile/edit/');
-    }
     
     
     else 
     {
-        $score = Auth::getUser()->profile->score;
-        $score->increment('total_score', $totalScore);
-        
-        $score->save();
-        return Redirect::to('profile');
+        try
+        {
+            $score = Auth::getUser()->profile->score;
+            $score->increment('total_score', $totalScore);
+            
+            $score->save();
+            return Redirect::to('profile');
+        }
+        catch(Exception $ex)
+        {
+            return Redirect::to('profile');
+        }
     }
 }
 ==

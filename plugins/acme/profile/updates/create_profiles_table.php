@@ -19,6 +19,8 @@ class CreateProfilesTable extends Migration
             $table->string('nationality')->nullable();
             $table->string('position')->nullable(); 
             $table->string('fan_type')->nullable();
+            $table->double('total_score', 10, 0)->nullable();
+            $table->double('quizzes_taken', 10, 0)->nullable();
             $table->timestamps();
         });
     }

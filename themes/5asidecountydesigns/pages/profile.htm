@@ -18,7 +18,7 @@ redirect = "/#promo-1"
         <div class="jumbotron" id="pc-jumbotron" style="background-image:url('{{ 'assets/images/16533.jpg' | theme }}')"/>
             <div class="container" id="pc-container-inner">
                 {% if user.avatar.path %}
-                    <div class="col-md-2" id="col-md-2-inner">
+                    <div class="col-md-2 col-testing" id="col-md-2-inner">
                         <img class="img-responsive" src="{{ user.avatar.path }}"/>
                     </div> <!-- End col-md-2-inner -->
                 {% endif %}
