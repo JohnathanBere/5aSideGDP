@@ -13,9 +13,9 @@ October's mission is to show the world that web development is not rocket scienc
 
 A lot of backend work will be needed to make it so the site can be sustained from the client-side. That is:
 
-User registration and validation is []
-Entity relationships among users and other associations such as posts, statuses and circles []
-Quizzes are put in place []
+User registration and validation is [x]
+Entity relationships among users and other associations such as posts, statuses and circles [x]
+Quizzes are put in place [x]
 
 ### Learning October
 

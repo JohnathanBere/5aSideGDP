@@ -184,22 +184,30 @@ public function quizSubmit()
     </div>
         <div class="col-md-8 col-md-offset-2">
         {{ form_open({request: 'quizSubmit'}, { model: user.profile.score }, {'enc-type': 'multipart/form-data'}) }}
+            <ol>
             {% for question in questions %}
                 {% set quiz = quizDetails.record %}
                 {% if question.quiz_id == quiz.id %}
+                <li id="{{ question.id }}">
                 <div class="form-group">
                     {{ question.sentence | raw }}
+                        <ol type="a">
                         {% for answer in answers %}
                             {% if answer.question_id == question.id %}
+                                <li>
                                 <div>
                                     <input type="radio" name="question-{{ question.id }}-answers" id="question-{{ question.id }}-answers-{{ answer.id }}" value="{{ answer.id }}" />
                                     <label for="question-{{ question.id }}-answers-{{ answer.id }}">{{ answer.caption }}</label>
                                 </div>
+                                </li>
                             {% endif %}
                         {% endfor %}
+                        </ol>
                 </div>
+                </li>
                 {% endif %}
             {% endfor %}
+            </ol>
             <button type="submit" class="btn btn-success">Submit</button>
         {{ form_close() }}
         </div>

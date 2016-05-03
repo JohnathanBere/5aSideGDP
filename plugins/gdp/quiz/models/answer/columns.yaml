@@ -14,3 +14,6 @@ columns:
         type: number
         searchable: true
         sortable: true
+    flag:
+        label: flag
+        type: text
