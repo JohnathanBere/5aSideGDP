@@ -16,6 +16,7 @@ sftp-config.json
 selenium.php
 composer.lock
 gdp_1.sql
+gdp_2.sql
 
 # for netbeans
 nbproject

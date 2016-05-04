@@ -27,18 +27,22 @@ redirect = "/#promo-1"
                         <h1>{{ user.profile.username}}</h1>
                         <div class="table-responsive table-condensed">
                             <table class="table">
-                                <tr>
-                                    <td>Favourite Team</td>
-                                    <td>Nationality</td>
-                                    <td>Position</td>
-                                    <td>Type of Fan</td>
-                                </tr>
-                                <tr>
-                                    <td>{{ user.profile.favourite_team }}</td>
-                                    <td>{{ user.profile.nationality }}</td>
-                                    <td>{{ user.profile.position }}</td>
-                                    <td>{{ user.profile.fan_type }}</td>
-                                </tr>
+                                <thead>
+                                    <tr>
+                                        <th>Favourite Team</th>
+                                        <th>Nationality</th>
+                                        <th>Position</th>
+                                        <th>Type of Fan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ user.profile.favourite_team }}</td>
+                                        <td>{{ user.profile.nationality }}</td>
+                                        <td>{{ user.profile.position }}</td>
+                                        <td>{{ user.profile.fan_type }}</td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div> <!-- End Responsive Table -->
                         <p>
@@ -46,14 +50,18 @@ redirect = "/#promo-1"
                         </p>
                         <div class="table-responsive table-condensed">
                             <table class="table">
-                                <tr>
-                                    <td>Total Score</td>
-                                    <td>Recent Score</td>
-                                </tr>
-                                <tr>
-                                    <td>{{ user.profile.score.total_score }}</td>
-                                    <td></td>
-                                </tr>
+                                <thead>
+                                    <tr>
+                                        <th>Total Score</th>
+                                        <th>Recent Score</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ user.profile.score.total_score }}</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div> <!-- End Responsive Table -->
                     </div> <!-- End pc-well -->

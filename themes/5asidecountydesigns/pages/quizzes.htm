@@ -1,5 +1,4 @@
 title = "Quiz"
-url = "quiz/:slug"
 layout = "default"
 is_hidden = 0
 
@@ -35,7 +34,6 @@ detailsPage = "-"
 detailsUrlParameter = "id"
 pageNumber = "{{ :page }}"
 ==
-use Gdp\Quiz\Models\Score;
 use Gdp\Quiz\Models\Quiz;
 use Acme\Profile\Models\Profile;
 use Gdp\Quiz\Models\Answer;
@@ -53,7 +51,7 @@ public function user()
     return Auth::getUser()->profile;
 }
 
-public function score()
+ /* public function score()
 {
     if (!Auth::check()) {
         return null;
@@ -68,7 +66,7 @@ public function score()
     {
         return Redirect::to('user/profile/edit');
     }
-}
+} */
 
 
 
@@ -88,36 +86,34 @@ public function quizSubmit()
     $answers = Answer::get();
     $quizzes = Quiz::get();
     
-    foreach($quizzes as $quiz)
+     foreach($quizzes as $quiz)
     {
         if($quiz->id)
         {
             foreach($questions as $question)
             {
-                if($question->quiz_id == $quiz->id)
+                if($question->id && $question->quiz_id == $quiz->id)
                 {
+                    // $choice = $_POST['question-' . $question->id . '-answers'];
+                    // identifier, you need unique identifiers for the questions in the array! ^ Above is this variable!
                     foreach($answers as $answer)
                     {
                         
-                        //try
-                        //{
-                            $choice = isset($_POST['question-' . $question->id . '-answers-' . $answer->id]);
-                            if($answer->id && $choice == $answer->id && $answer->flag == true)
+                        try
+                        {
+                            $choice = $_POST['question-' . $question->id . '-answers'];
+                            if($choice == $answer->id && $answer->flag == true /* && $answer->question_id == $question->id */)
                             {
                                 $points++;
                             }
-                            else
-                            {
-                                
-                            }
-                        //}
-                        /* catch (Exception $ex)
+                        }
+                        catch (Exception $ex)
                         {
                             $slug = $this->param('slug');
                             return Redirect::to('quiz/' . $slug);
                         }
-                        */
                     }
+                    //$count++;
                 }
             }
         }
@@ -130,14 +126,12 @@ public function quizSubmit()
     // YES IT IS THAT POWERFUL.
     // The total_score value will equal the new value of the $points variable. Effectively
     // Adding an amount to the total_score attribute of a SPECIFIC profile's score table.
-    if(!$score = $this->score())
+    if(!$user = $this->user())
     {
-        $profile = Auth::getUser()->profile;
+        $user = Auth::getUser()->profile;
         
-        $score = new Score();
-        $score->total_score = $totalScore;
-        $score->profile_id = $profile->id;
-        $score->save();
+        $user->total_score = $totalScore;
+        $user->save();
         return Redirect::to('profile');
     }
     
@@ -147,10 +141,10 @@ public function quizSubmit()
     {
         try
         {
-            $score = Auth::getUser()->profile->score;
-            $score->increment('total_score', $totalScore);
+            $user = Auth::getUser()->profile;
+            $user->increment('total_score', $totalScore);
             
-            $score->save();
+            $user->save();
             return Redirect::to('profile');
         }
         catch(Exception $ex)
@@ -188,33 +182,23 @@ public function quizSubmit()
             </div>
     </div>
         <div class="col-md-8 col-md-offset-2">
-        {{ form_open({request: 'quizSubmit'}, { model: user.profile.score }, {'enc-type': 'multipart/form-data'}) }}
-            {% set quiz = quizDetails.record %}
-            <ol>
+        {{ form_open({request: 'quizSubmit'}, { model: user.profile }, {'enc-type': 'multipart/form-data'}) }}
             {% for question in questions %}
-                {% if question.quiz_id == quiz.id %}
-                <li id="{{ question.id }}">
+                {% set quiz = quizDetails.record %}
+                {% if question.id and question.quiz_id == quiz.id %}
                 <div class="form-group">
                     {{ question.sentence | raw }}
-                        <ol type="a">
                         {% for answer in answers %}
-                            
                             {% if answer.question_id == question.id %}
-                                <li>
-                                <div>
-                                    <input type="radio" name="question-{{ question.id }}-answers-{{ answer.id }}" id="question-{{ question.id }}-answers-{{ answer.id }}" value="{{ answer.id }}" />
-                                    <label for="question-{{ question.id }}-answers-{{ answer.id }}">{{ answer.caption }}</label>
-                                </div>
-                                </li>
+                                    <div>
+                                        <input type="radio" name="question-{{ question.id }}-answers" id="question-{{ question.id }}-answers-{{ answer.id }}" value="{{ answer.id }}" />
+                                        <label for="question-{{ question.id }}-answers-{{ answer.id }}">{{ answer.caption }}</label>
+                                    </div>
                             {% endif %}
-                            
                         {% endfor %}
-                        </ol>
                 </div>
-                </li>
                 {% endif %}
             {% endfor %}
-            </ol>
             <button type="submit" class="btn btn-success">Submit</button>
         {{ form_close() }}
         </div>

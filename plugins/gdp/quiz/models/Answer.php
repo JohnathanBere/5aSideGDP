@@ -30,9 +30,4 @@ class Answer extends Model
     public $belongsTo = [
             'question' => ['Gdp\Quiz\Models\Question']
         ];
-        
-    public function scopeId($query)
-    {
-        return $query->where('id');    
-    }
 }
