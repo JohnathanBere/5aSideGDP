@@ -213,7 +213,7 @@ public function quizSubmit()
                             {% if answer.question_id == question.id %}
                                 <li {% flash %} {% if answer.flag == true %} class="{{ message }}-success" {% else %} class="{{ message }}-danger"{% endif %} {% endflash %}>
                                     <div id="answerset_{{ question.id }}">
-                                        <input type="radio" name="question-{{ question.id }}-answers-{{ answer.id }}" id="question-{{ question.id }}-answers" value="{{ answer.id }}" />
+                                        <input type="radio" {% flash %} disabled="disabled" {% endflash %} name="question-{{ question.id }}-answers-{{ answer.id }}" id="question-{{ question.id }}-answers" value="{{ answer.id }}" />
                                         <label for="question-{{ question.id }}-answers-{{ answer.id }}">{{ answer.caption }}</label>
                                     </div>
                                 </li>
@@ -225,7 +225,7 @@ public function quizSubmit()
                 {% endif %}
             {% endfor %}
             </ol>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" {% flash %} disabled="disabled" {% endflash %}class="btn btn-success">Submit</button>
         {{ form_close() }}
         </div>
     </div>
