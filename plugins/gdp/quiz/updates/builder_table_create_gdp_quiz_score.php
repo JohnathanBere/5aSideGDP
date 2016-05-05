@@ -13,6 +13,7 @@ class BuilderTableCreateGdpQuizScore extends Migration
             $table->increments('id');
             $table->integer('profile_id')->unsigned()->index();
             $table->double('total_score', 10, 0)->nullable();
+            $table->double('quizzes_taken', 10, 0)->nullable();
         });
     }
     

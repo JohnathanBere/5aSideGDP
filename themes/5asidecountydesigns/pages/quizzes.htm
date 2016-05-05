@@ -1,5 +1,6 @@
 title = "Quiz"
 layout = "default"
+
 is_hidden = 0
 
 [account]
@@ -34,6 +35,7 @@ detailsPage = "-"
 detailsUrlParameter = "id"
 pageNumber = "{{ :page }}"
 ==
+use Gdp\Quiz\Models\Score;
 use Gdp\Quiz\Models\Quiz;
 use Acme\Profile\Models\Profile;
 use Gdp\Quiz\Models\Answer;
@@ -51,7 +53,7 @@ public function user()
     return Auth::getUser()->profile;
 }
 
- /* public function score()
+public function score()
 {
     if (!Auth::check()) {
         return null;
@@ -66,7 +68,7 @@ public function user()
     {
         return Redirect::to('user/profile/edit');
     }
-} */
+}
 
 
 
@@ -86,34 +88,33 @@ public function quizSubmit()
     $answers = Answer::get();
     $quizzes = Quiz::get();
     
-     foreach($quizzes as $quiz)
+    foreach($quizzes as $quiz)
     {
         if($quiz->id)
         {
             foreach($questions as $question)
             {
-                if($question->id && $question->quiz_id == $quiz->id)
+                if($question->quiz_id == $quiz->id)
                 {
-                    // $choice = $_POST['question-' . $question->id . '-answers'];
-                    // identifier, you need unique identifiers for the questions in the array! ^ Above is this variable!
                     foreach($answers as $answer)
                     {
                         
-                        try
-                        {
-                            $choice = $_POST['question-' . $question->id . '-answers'];
-                            if($choice == $answer->id && $answer->flag == true /* && $answer->question_id == $question->id */)
+                        //try
+                        //{
+                            // $choice = isset($_POST['question-' . $question->id . '-answers-' . $answer->id]);
+                            $choice = Request::input("question-".$question->id."-answers-".$answer->id);
+                            if($answer->id && $choice == $answer->id && $answer->flag == true)
                             {
                                 $points++;
                             }
-                        }
-                        catch (Exception $ex)
+                        //}
+                        /* catch (Exception $ex)
                         {
                             $slug = $this->param('slug');
                             return Redirect::to('quiz/' . $slug);
                         }
+                        */
                     }
-                    //$count++;
                 }
             }
         }
@@ -126,12 +127,14 @@ public function quizSubmit()
     // YES IT IS THAT POWERFUL.
     // The total_score value will equal the new value of the $points variable. Effectively
     // Adding an amount to the total_score attribute of a SPECIFIC profile's score table.
-    if(!$user = $this->user())
+    if(!$score = $this->score())
     {
-        $user = Auth::getUser()->profile;
+        $profile = Auth::getUser()->profile;
         
-        $user->total_score = $totalScore;
-        $user->save();
+        $score = new Score();
+        $score->total_score = $totalScore;
+        $score->profile_id = $profile->id;
+        $score->save();
         return Redirect::to('profile');
     }
     
@@ -141,15 +144,23 @@ public function quizSubmit()
     {
         try
         {
-            $user = Auth::getUser()->profile;
-            $user->increment('total_score', $totalScore);
+            $score = Auth::getUser()->profile->score;
+            $score->increment('total_score', $totalScore);
             
-            $user->save();
-            return Redirect::to('profile');
+            $score->save();
+            
+            
+            // return Redirect::to('profile');
+            
+            $slug = $this->param('slug');
+            return Redirect::to('quiz/' . $slug)->with();
         }
         catch(Exception $ex)
         {
-            return Redirect::to('profile');
+            // return Redirect::to('profile');
+            // return Redirect::to('quiz/' . $slug)->with('message', 'alert');
+            Flash::error('alert');
+            return Redirect::to('quiz/' . $slug)->with('message', 'alert');
         }
     }
 }
@@ -182,23 +193,27 @@ public function quizSubmit()
             </div>
     </div>
         <div class="col-md-8 col-md-offset-2">
-        {{ form_open({request: 'quizSubmit'}, { model: user.profile }, {'enc-type': 'multipart/form-data'}) }}
+        {{ form_open({request: 'quizSubmit'}, { model: user.profile.score }, {'enc-type': 'multipart/form-data'}) }}
+            {% set quiz = quizDetails.record %}
+            <ol>
             {% for question in questions %}
-                {% set quiz = quizDetails.record %}
-                {% if question.id and question.quiz_id == quiz.id %}
+                {% if question.quiz_id == quiz.id %}
+                <li id="{{ question.id }}">
                 <div class="form-group">
                     {{ question.sentence | raw }}
+                    <select name="question-{{ question.id }}-answers-{{ answer.id }}" class="form-control">
                         {% for answer in answers %}
                             {% if answer.question_id == question.id %}
-                                    <div>
-                                        <input type="radio" name="question-{{ question.id }}-answers" id="question-{{ question.id }}-answers-{{ answer.id }}" value="{{ answer.id }}" />
-                                        <label for="question-{{ question.id }}-answers-{{ answer.id }}">{{ answer.caption }}</label>
-                                    </div>
+                                {# Remember!!! Add a unique identifier here!!! #}
+                                <option value="{{ answer.id }}">{{ answer.caption }}</option>
                             {% endif %}
                         {% endfor %}
+                    </select>
                 </div>
+                </li>
                 {% endif %}
             {% endfor %}
+            </ol>
             <button type="submit" class="btn btn-success">Submit</button>
         {{ form_close() }}
         </div>

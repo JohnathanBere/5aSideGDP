@@ -1,6 +1,6 @@
 title = "Quiz"
-url = "quiz/:slug"
 layout = "default"
+url = "quiz/:slug"
 is_hidden = 0
 
 [account]
@@ -84,6 +84,7 @@ public function quizSubmit()
     }
     
     $points = 0;
+    $count = 0;
     $questions = Question::get();
     $answers = Answer::get();
     $quizzes = Quiz::get();
@@ -99,29 +100,26 @@ public function quizSubmit()
                     foreach($answers as $answer)
                     {
                         
-                        //try
-                        //{
+                        try
+                        {
                             $choice = isset($_POST['question-' . $question->id . '-answers-' . $answer->id]);
                             if($answer->id && $choice == $answer->id && $answer->flag == true)
                             {
                                 $points++;
                             }
-                            else
-                            {
-                                
-                            }
-                        //}
-                        /* catch (Exception $ex)
+                        }
+                        catch (Exception $ex)
                         {
                             $slug = $this->param('slug');
                             return Redirect::to('quiz/' . $slug);
                         }
-                        */
+                        
                     }
                 }
             }
         }
     }
+    $count++;
     $totalScore = $points;
 
     
@@ -136,9 +134,13 @@ public function quizSubmit()
         
         $score = new Score();
         $score->total_score = $totalScore;
+        $score->quizzes_taken = $count;
         $score->profile_id = $profile->id;
         $score->save();
-        return Redirect::to('profile');
+        // return Redirect::to('profile');
+        $slug = $this->param('slug');
+        Flash::error('alert');
+        return Redirect::to('quiz/' . $slug)->with('message', 'alert');
     }
     
     
@@ -149,13 +151,23 @@ public function quizSubmit()
         {
             $score = Auth::getUser()->profile->score;
             $score->increment('total_score', $totalScore);
+            $score->increment('quizzes_taken', $count);
             
             $score->save();
-            return Redirect::to('profile');
+            
+            
+            // return Redirect::to('profile');
+            
+            $slug = $this->param('slug');
+            Flash::error('alert');
+            return Redirect::to('quiz/' . $slug)->with('message', 'alert');
         }
         catch(Exception $ex)
         {
-            return Redirect::to('profile');
+            // return Redirect::to('profile');
+            // return Redirect::to('quiz/' . $slug)->with('message', 'alert');
+            Flash::error('alert');
+            return Redirect::to('quiz/' . $slug)->with('message', 'alert');
         }
     }
 }
@@ -198,16 +210,14 @@ public function quizSubmit()
                     {{ question.sentence | raw }}
                         <ol type="a">
                         {% for answer in answers %}
-                            
                             {% if answer.question_id == question.id %}
-                                <li>
-                                <div>
-                                    <input type="radio" name="question-{{ question.id }}-answers-{{ answer.id }}" id="question-{{ question.id }}-answers-{{ answer.id }}" value="{{ answer.id }}" />
-                                    <label for="question-{{ question.id }}-answers-{{ answer.id }}">{{ answer.caption }}</label>
-                                </div>
+                                <li {% flash %} {% if answer.flag == true %} class="{{ message }}-success" {% else %} class="{{ message }}-danger"{% endif %} {% endflash %}>
+                                    <div id="answerset_{{ question.id }}">
+                                        <input type="radio" name="question-{{ question.id }}-answers-{{ answer.id }}" id="question-{{ question.id }}-answers" value="{{ answer.id }}" />
+                                        <label for="question-{{ question.id }}-answers-{{ answer.id }}">{{ answer.caption }}</label>
+                                    </div>
                                 </li>
                             {% endif %}
-                            
                         {% endfor %}
                         </ol>
                 </div>

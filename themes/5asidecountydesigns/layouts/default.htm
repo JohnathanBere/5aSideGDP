@@ -2,7 +2,35 @@ description = "first custom layout"
 
 [session]
 security = "all"
+
+[builderDetails quizDetails]
+modelClass = "Gdp\Quiz\Models\Quiz"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+
+[builderList questionsList]
+modelClass = "Gdp\Quiz\Models\Question"
+scope = "-"
+displayColumn = "sentence"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[builderList answersList]
+modelClass = "Gdp\Quiz\Models\Answer"
+scope = "-"
+displayColumn = "caption"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
 ==
+{% set quiz = quizDetails.record %}
+{% set questions = questionsList.records %}
+{% set answers = answersList.records %}
 <!DOCTYPE html> 
 <html lang="en" style="height:100%;">
     <head> 
@@ -127,6 +155,16 @@ security = "all"
         <script>
             $(document).ready(function() {
               $('[data-toggle="popover"]').popover();
+              
+              {% for question in questions %}
+              {% if question.quiz_id == quiz.id %}
+                  $('div#answerset_{{ question.id }} input[type=radio]').change(function() {
+                        // When the radio button for answerset_{{ question.id }} is selected.
+                        // then deselect all other radio buttons for answerset_{{ question.id }}.
+                        $('div#answerset_{{ question.id }} input[type=radio]:checked').not(this).prop('checked', false);
+                    });
+              {% endif %}
+              {% endfor %}
             });
         </script>
         {% framework extras %}

@@ -53,13 +53,15 @@ redirect = "/#promo-1"
                                 <thead>
                                     <tr>
                                         <th>Total Score</th>
-                                        <th>Recent Score</th>
+                                        <th>Quizzes Taken</th>
+                                        <th>Average Score</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>{{ user.profile.score.total_score }}</td>
-                                        <td></td>
+                                        <td>{{ user.profile.score.quizzes_taken }}</td>
+                                        <td>{{ (user.profile.score.total_score / user.profile.score.quizzes_taken) }}</td>
                                     </tr>
                                 </tbody>
                             </table>
